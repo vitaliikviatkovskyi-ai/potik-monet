@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Приклад фінансової цілі: накопичення на Ferrari F8 Tributo з прогнозом прогресу та строку досягнення.">
+	<title>Приклад цілі — Ferrari F8 Tributo | Потік монет</title>
+	<script src="https://cdn.tailwindcss.com"></script>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body id="top">
+	<header class="header">
+		<div class="header-logo">
+			<a href="index.html#top" aria-label="Потік монет — на головну сторінку">
+				<img src="assets/icons/logo.svg" alt="Потік монет">
+			</a>
+		</div>
+		<button class="menu-toggle transition-all duration-200 hover:bg-[#1e3e67] active:scale-95" type="button" aria-label="Відкрити меню" aria-controls="mobile-menu-overlay" aria-expanded="false">
+			<i class="fa-solid fa-bars" aria-hidden="true"></i>
+		</button>
+		<nav class="header-nav" aria-label="Головна навігація">
+			<ul>
+				<li class="nav-item hover:bg-gray-50/80 transition-colors rounded-lg"><a href="index.html#top" class="hover:text-[#254d7e] hover:underline transition-colors">Головна</a></li>
+				<li class="nav-item hover:bg-gray-50/80 transition-colors rounded-lg"><a href="result.html" class="hover:text-[#254d7e] hover:underline transition-colors">Результат</a></li>
+				<li class="nav-item hover:bg-gray-50/80 transition-colors rounded-lg"><a href="goals.html" class="hover:text-[#254d7e] hover:underline transition-colors">Мої цілі</a></li>
+				<li class="nav-item hover:bg-gray-50/80 transition-colors rounded-lg"><a href="shared.html" class="hover:text-[#254d7e] hover:underline transition-colors">Спільний перегляд</a></li>
+				<li class="nav-item active hover:bg-gray-50/80 transition-colors rounded-lg"><a href="demo-goal.html" aria-current="page" class="hover:text-[#254d7e] hover:underline transition-colors">Приклад цілі</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main class="demo-main">
+		<section class="demo-hero" aria-labelledby="demo-title">
+			<div class="demo-container">
+				<div class="demo-hero-copy">
+					<span class="section-tag light">ПРИКЛАД ЦІЛІ / АВТОМОБІЛЬ</span>
+					<h1 id="demo-title">Придбання Ferrari F8 Tributo</h1>
+					<p>Велика мрія стає зрозумілішою, коли розкласти шлях до неї на посильні кроки.</p>
+					<a href="result.html" class="inline-flex items-center gap-2 px-6 py-3 bg-[#254d7e] hover:bg-[#1e3e67] active:scale-95 text-white font-semibold rounded-lg transition-all duration-200 shadow-md hover:shadow-lg cursor-pointer mt-4">
+						<i class="fa-regular fa-bookmark"></i>
+						Додати як власну ціль
+					</a>
+					<div class="demo-target-date">
+						<span>Орієнтовно до цілі</span>
+						<strong>Лютий 2032 року</strong>
+					</div>
+				</div>
+				<img src="assets/images/ferrari.jpg" alt="Ferrari F8 Tributo" class="w-full max-w-lg h-auto object-cover rounded-2xl shadow-lg border border-white/10 transition-all duration-500 ease-out hover:scale-[1.03] hover:shadow-2xl hover:border-white/20 cursor-pointer">
+				<div class="demo-hero-amount p-6 bg-white/5 rounded-2xl border border-white/10 transition-all duration-300 hover:bg-white/10 hover:border-white/20 hover:-translate-y-1 hover:shadow-xl group" aria-label="Цільова сума 12 мільйонів гривень">
+					<span>ЦІЛЬОВА СУМА</span>
+					<strong class="text-3xl md:text-4xl font-bold text-emerald-400 transition-colors duration-300 group-hover:text-emerald-300 group-hover:!text-emerald-300 md:!text-4xl">12 000 000 ₴</strong>
+					<small>План без урахування інвестиційного доходу</small>
+				</div>
+				<div class="demo-progress-card p-6 bg-white/5 rounded-2xl border border-white/10 transition-all duration-300 hover:bg-white/10 hover:border-white/20 hover:-translate-y-0.5 group">
+					<div class="demo-progress-heading">
+						<strong>Ваш старт</strong>
+						<span>2 500 000 ₴ із 12 000 000 ₴</span>
+						<strong>20,8%</strong>
+					</div>
+					<progress class="goal-progress h-full bg-emerald-500 rounded-full transition-all duration-300 group-hover:brightness-125 group-hover:shadow-[0_0_12px_rgba(16,185,129,0.5)] group-hover:!brightness-125" max="100" value="20.8" aria-label="Прогрес цілі: 20,8%"></progress>
+					<p>Поточні заощадження — це стартова сума, окремо від майбутніх внесків.</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="demo-details" aria-labelledby="demo-plan-title">
+			<div class="demo-container">
+				<div class="demo-parameters">
+					<span class="section-tag">ПЛАН НАКОПИЧЕННЯ</span>
+					<h2 id="demo-plan-title">Крок за кроком до мрії.</h2>
+					<dl class="demo-parameter-grid">
+						<div><dt>Уже накопичено</dt><dd>2 500 000 ₴</dd></div>
+						<div><dt>Щомісячний внесок</dt><dd>150 000 ₴</dd></div>
+						<div><dt>Залишилося зібрати</dt><dd>9 500 000 ₴</dd></div>
+						<div><dt>Орієнтовний строк</dt><dd>64 місяці</dd></div>
+					</dl>
+				</div>
+
+				<div class="demo-timeline">
+					<div class="demo-timeline-heading">
+						<div>
+							<span class="section-tag">ПРОГНОЗ НАКОПИЧЕННЯ</span>
+							<h2>Довгий шлях — із видимими етапами.</h2>
+						</div>
+						<p>Розрахунок передбачає незмінний внесок 150 000 ₴ щомісяця та дохідність 0%. Останній внесок скориговано до суми, потрібної для цілі.</p>
+					</div>
+					<ol class="demo-year-list" aria-label="Річні етапи накопичення">
+						<li class="hover:bg-gray-50/80 transition-colors rounded-lg">
+							<div class="demo-year-label"><strong>2026</strong><span>2 800 000 ₴</span></div>
+							<div class="demo-year-track"><span style="width: 23.33%"></span></div>
+							<small>Старт і перші 2 внески</small>
+						</li>
+						<li class="hover:bg-gray-50/80 transition-colors rounded-lg">
+							<div class="demo-year-label"><strong>2027</strong><span>4 600 000 ₴</span></div>
+							<div class="demo-year-track"><span style="width: 38.33%"></span></div>
+							<small>12 щомісячних внесків</small>
+						</li>
+						<li class="hover:bg-gray-50/80 transition-colors rounded-lg">
+							<div class="demo-year-label"><strong>2028</strong><span>6 400 000 ₴</span></div>
+							<div class="demo-year-track"><span style="width: 53.33%"></span></div>
+							<small>Понад половину цілі</small>
+						</li>
+						<li class="hover:bg-gray-50/80 transition-colors rounded-lg">
+							<div class="demo-year-label"><strong>2029</strong><span>8 200 000 ₴</span></div>
+							<div class="demo-year-track"><span style="width: 68.33%"></span></div>
+							<small>12 щомісячних внесків</small>
+						</li>
+						<li class="hover:bg-gray-50/80 transition-colors rounded-lg">
+							<div class="demo-year-label"><strong>2030</strong><span>10 000 000 ₴</span></div>
+							<div class="demo-year-track"><span style="width: 83.33%"></span></div>
+							<small>Більша частина шляху позаду</small>
+						</li>
+						<li class="hover:bg-gray-50/80 transition-colors rounded-lg">
+							<div class="demo-year-label"><strong>2031</strong><span>11 800 000 ₴</span></div>
+							<div class="demo-year-track"><span style="width: 98.33%"></span></div>
+							<small>Фініш уже близько</small>
+						</li>
+						<li class="is-final hover:bg-gray-50/80 transition-colors rounded-lg">
+							<div class="demo-year-label"><strong>Лютий 2032</strong><span>12 000 000 ₴</span></div>
+							<div class="demo-year-track"><span style="width: 100%"></span></div>
+							<small>Ціль досягнута</small>
+						</li>
+					</ol>
+					<aside class="demo-note">
+						<strong>Прогноз — орієнтир, а не обіцянка.</strong>
+						<p>Це демонстраційний приклад, а не пропозиція щодо купівлі автомобіля чи фінансова порада. Реальний строк залежить від регулярності внесків і вартості цілі.</p>
+					</aside>
+				</div>
+			</div>
+		</section>
+
+		<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12" aria-labelledby="other-goals-title">
+			<h2 id="other-goals-title" class="mb-8 text-3xl font-bold text-gray-900">Інші варіанти фінансових цілей</h2>
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+				<article class="overflow-hidden rounded-xl bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg transition-all hover:border-gray-200 group">
+					<img src="assets/images/apartment.jpg" alt="Сучасна квартира" class="h-48 w-full object-cover group-hover:scale-105 transition-transform duration-300 ease-out">
+					<div class="p-6">
+						<span class="text-sm font-semibold uppercase tracking-wide text-gray-500">Нерухомість</span>
+						<h3 class="mt-2 text-xl font-bold text-gray-900">Перший внесок за квартиру</h3>
+						<p class="mt-3 text-2xl font-bold text-gray-900">1 500 000 ₴</p>
+						<p class="mt-3 text-gray-600">Планування власного житла з щомісячним внеском 25 000 ₴.</p>
+						<a href="result.html" class="mt-6 w-full inline-flex items-center justify-center min-h-[44px] px-5 py-2.5 bg-[#254d7e] hover:bg-[#1e3e67] text-white font-semibold text-sm rounded-lg transition text-center transition-all duration-200 active:scale-95">Застосувати шаблон</a>
+					</div>
+				</article>
+				<article class="overflow-hidden rounded-xl bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg transition-all hover:border-gray-200 group">
+					<img src="assets/images/macbook.jpeg" alt="MacBook Pro" class="h-48 w-full object-cover group-hover:scale-105 transition-transform duration-300 ease-out">
+					<div class="p-6">
+						<span class="text-sm font-semibold uppercase tracking-wide text-gray-500">Освіта та техніка</span>
+						<h3 class="mt-2 text-xl font-bold text-gray-900">MacBook Pro + IT-курси</h3>
+						<p class="mt-3 text-2xl font-bold text-gray-900">120 000 ₴</p>
+						<p class="mt-3 text-gray-600">Швидка мета на 12 місяців для професійного розвитку.</p>
+						<a href="result.html" class="mt-6 w-full inline-flex items-center justify-center min-h-[44px] px-5 py-2.5 bg-[#254d7e] hover:bg-[#1e3e67] text-white font-semibold text-sm rounded-lg transition text-center transition-all duration-200 active:scale-95">Застосувати шаблон</a>
+					</div>
+				</article>
+				<article class="overflow-hidden rounded-xl bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg transition-all hover:border-gray-200 group">
+					<img src="assets/images/safety-fund.jpg" alt="Заощадження для фінансової безпеки" class="h-48 w-full object-cover group-hover:scale-105 transition-transform duration-300 ease-out">
+					<div class="p-6">
+						<span class="text-sm font-semibold uppercase tracking-wide text-gray-500">Безпека</span>
+						<h3 class="mt-2 text-xl font-bold text-gray-900">Резервний фонд (6 місяців)</h3>
+						<p class="mt-3 text-2xl font-bold text-gray-900">200 000 ₴</p>
+						<p class="mt-3 text-gray-600">Базовий фінансовий щит для впевненості у майбутньому.</p>
+						<a href="result.html" class="mt-6 w-full inline-flex items-center justify-center min-h-[44px] px-5 py-2.5 bg-[#254d7e] hover:bg-[#1e3e67] text-white font-semibold text-sm rounded-lg transition text-center transition-all duration-200 active:scale-95">Застосувати шаблон</a>
+					</div>
+				</article>
+			</div>
+		</section>
+	</main>
+
+	<footer class="footer-simple">
+		<div class="container">
+			<p>© 2026 Потік монет. Усі права захищені. <a href="index.html#top" class="hover:text-[#254d7e] hover:underline transition-colors">На головну</a></p>
+		</div>
+	</footer>
+
+	<script src="js/script.js" defer></script>
+	<div class="mobile-menu-overlay" id="mobile-menu-overlay" aria-hidden="true">
+		<div class="mobile-menu-header">
+			<span>МЕНЮ</span>
+			<button class="close-menu transition-all duration-200 hover:bg-[#1e3e67] active:scale-95" type="button"><span>Закрити</span><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+		</div>
+		<h2>Знайдіть свій розділ.</h2>
+		<section class="mobile-owner-card transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-gray-200 group" aria-label="Поточна сторінка власника">
+			<span>СТОРІНКА ВЛАСНИКА</span>
+			<strong>Приклад цілі</strong>
+		</section>
+		<nav class="mobile-menu-section" aria-label="Планування">
+			<h3>ПЛАНУВАННЯ</h3>
+			<ul>
+				<li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="index.html#top" class="hover:text-[#254d7e] hover:underline transition-colors"><span>Головна</span><span class="mobile-menu-arrow" aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></span></a></li>
+				<li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="result.html" class="hover:text-[#254d7e] hover:underline transition-colors"><span>Результат</span><span class="mobile-menu-arrow" aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></span></a></li>
+				<li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="goals.html" class="hover:text-[#254d7e] hover:underline transition-colors"><span>Мої цілі</span><span class="mobile-menu-arrow" aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></span></a></li>
+				<li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="shared.html" class="hover:text-[#254d7e] hover:underline transition-colors"><span>Спільний перегляд</span><span class="mobile-menu-arrow" aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></span></a></li>
+				<li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a class="active hover:text-[#254d7e] hover:underline transition-colors" href="demo-goal.html" aria-current="page"><span>Приклад цілі</span><span class="mobile-menu-current">Ви тут</span></a></li>
+			</ul>
+		</nav>
+		<nav class="mobile-menu-section" aria-label="Розділи головної">
+			<h3>РОЗДІЛИ ГОЛОВНОЇ</h3>
+			<ul>
+				<li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="index.html#features" class="hover:text-[#254d7e] hover:underline transition-colors">Можливості</a></li>
+				<li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="index.html#how-it-works" class="hover:text-[#254d7e] hover:underline transition-colors">Як це працює</a></li>
+				<li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="index.html#privacy" class="hover:text-[#254d7e] hover:underline transition-colors">Приватність</a></li>
+				<li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="index.html#comparison" class="hover:text-[#254d7e] hover:underline transition-colors">Порівняння</a></li>
+				<li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="index.html#reviews" class="hover:text-[#254d7e] hover:underline transition-colors">Відгуки</a></li>
+				<li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="index.html#about" class="hover:text-[#254d7e] hover:underline transition-colors">Про нас</a></li>
+				<li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="index.html#faq" class="hover:text-[#254d7e] hover:underline transition-colors">Питання й відповіді</a></li>
+			</ul>
+		</nav>
+		<p class="mobile-menu-disclaimer">Чотири параметри. Без реєстрації та підключення банку для розрахунку.</p>
+	</div>
+</body>
+</html>
