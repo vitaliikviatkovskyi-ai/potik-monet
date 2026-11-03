@@ -43,4 +43,6 @@ python -m http.server 8000
 
 GitHub Pages: гілка `main`, папка `/ (root)`.
 Netlify: папка публікації `.`, команда збірки не потрібна.
+Репозиторій: https://github.com/vitaliikviatkovskyi-ai/potik-monet
+
 Адреси опублікованих сайтів додаються після підтвердження деплою.
