@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Плануйте фінансові цілі та розраховуйте прогнозовану дату накопичення з сервісом «Потік монет». Без реєстрації та доступу до банківських рахунків.">
+  <title>Потік монет — планування фінансових цілей</title>
+  <link rel="icon" href="assets/icons/logo.svg" type="image/svg+xml">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts (Montserrat) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body id="top">
+<header class="w-full bg-white border-b border-gray-100 sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      <div class="header-logo flex items-center">
+        <a href="#top" aria-label="Потік монет — на початок сторінки" class="flex items-center gap-3 focus:outline-none hover:text-[#254d7e] hover:underline transition-colors">
+          <img src="assets/icons/logo.svg" alt="Потік монет">
+          <span class="text-xl font-bold text-[#0d1829]">Потік монет</span>
+        </a>
+      </div>
+      <button class="menu-toggle md:hidden p-2 text-gray-700 transition-all duration-200 hover:bg-[#1e3e67] active:scale-95" type="button" aria-label="Відкрити меню" aria-controls="mobile-menu-overlay" aria-expanded="false">
+        <i class="fa-solid fa-bars text-xl" aria-hidden="true"></i>
+      </button>
+      <nav class="header-nav hidden md:flex items-center" aria-label="Головна навігація">
+        <ul class="flex items-center gap-8 m-0 p-0 list-none">
+          <li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="result.html" class="text-gray-700 hover:text-[#254d7e] font-medium transition hover:underline transition-colors">Мій результат</a></li>
+          <li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="goals.html" class="text-gray-700 hover:text-[#254d7e] font-medium transition hover:underline transition-colors">Мої цілі</a></li>
+          <li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="shared.html" class="text-gray-700 hover:text-[#254d7e] font-medium transition hover:underline transition-colors">Спільний перегляд</a></li>
+          <li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="demo-goal.html" class="text-gray-700 hover:text-[#254d7e] font-medium transition hover:underline transition-colors">Приклад цілі</a></li>
+        </ul>
+      </nav>
+      <div class="hidden md:block">
+        <a href="result.html" class="inline-flex items-center justify-center px-6 py-2.5 bg-[#254d7e] hover:bg-[#1e3e67] text-white font-semibold rounded-lg transition shadow-sm transition-all duration-200 active:scale-95">
+          Створити ціль
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+  <main class="main-content">
+    <section class="hero-block home-hero !bg-[#0d1829]" aria-labelledby="main-title">
+      <div class="home-hero-inner mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="hero-text">
+          <p class="hero-eyebrow">ФІНАНСОВА ЦІЛЬ. ЗРОЗУМІЛИЙ ШЛЯХ.</p>
+          <h1 class="main-title !text-2xl sm:!text-3xl lg:!text-4xl font-sans font-bold" id="main-title">Побачте прогнозовану дату своєї цілі</h1>
+          <p class="hero-desc">Чотири параметри — і замість «колись» ви бачите горизонт накопичення. Без ручного обліку витрат і доступу до банківських даних.</p>
+          <div class="hero-btn-wrap">
+            <a href="#simulator" class="btn inline-flex w-full md:w-auto !min-h-[44px] items-center justify-center rounded-xl transition-all duration-200 hover:bg-[#1e3e67] active:scale-95">До симулятора</a>
+          </div>
+        </div>
+        <div class="hero-media">
+          <img src="assets/images/hero-illustration.png" alt="3D-ілюстрація фінансового треку">
+        </div>
+        <ul class="hero-badges" aria-label="Переваги сервісу">
+          <li class="badge hover:bg-gray-50/80 transition-colors rounded-lg">4 параметри</li>
+          <li class="badge hover:bg-gray-50/80 transition-colors rounded-lg">Без реєстрації</li>
+          <li class="badge hover:bg-gray-50/80 transition-colors rounded-lg">Без доступу до рахунків</li>
+        </ul>
+      </div>
+    </section>
+
+
+    <section class="block-section" id="simulator" aria-labelledby="simulator-title">
+      <div class="simulator-intro">
+        <span class="section-tag">01 / СИМУЛЯТОР</span>
+        <h2 class="section-title !text-2xl sm:!text-3xl lg:!text-4xl font-sans font-bold" id="simulator-title">Чотири числа. Один зрозумілий горизонт.</h2>
+        <p class="section-desc">Задайте суму й комфортний щомісячний внесок. Симулятор побудує прогноз і повний розклад накопичення — місяць за місяцем.</p>
+        <p class="bold-text">Почніть із власного темпу</p>
+        <p class="small-text">У прикладі: ціль 50 000 ₴ та внесок 5 000 ₴ на місяць. Уже заощаджено 0 ₴, очікувана дохідність — 0% річних.</p>
+        <p class="small-text">Змінюйте параметри, щоб порівняти сценарії. Для першого розрахунку обліковий запис не потрібен.</p>
+      </div>
+      <form class="calculator-form transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:!shadow-xl hover:!-translate-y-1" action="#cta" aria-label="Калькулятор фінансової цілі">
+        <h3 class="form-title font-sans font-bold">Симулятор фінансової цілі</h3>
+        <img class="form-settings-icon" src="assets/icons/icon-settings.svg" alt="" aria-hidden="true">
+        <div class="form-group">
+          <label class="label-text" for="goal-amount">Сума цілі (грн)</label>
+          <input id="goal-amount" name="goalAmount" type="number" min="0.01" step="0.01" placeholder="100000" aria-describedby="goal-amount-hint" class="transition-colors duration-200 hover:border-[#254d7e] focus:border-[#254d7e] focus:ring-2 focus:ring-[#254d7e]/20 outline-none hover:!border-[#254d7e] focus:!border-[#254d7e] focus:!ring-2 focus:!ring-[#254d7e]/20" required>
+          <span class="input-hint" id="goal-amount-hint">Більше 0 ₴</span>
+        </div>
+        <div class="form-group">
+          <label class="label-text" for="saved-amount">Вже заощаджено (грн)</label>
+          <input id="saved-amount" name="savedAmount" type="number" min="0" step="0.01" placeholder="15000" aria-describedby="saved-amount-hint" class="transition-colors duration-200 hover:border-[#254d7e] focus:border-[#254d7e] focus:ring-2 focus:ring-[#254d7e]/20 outline-none hover:!border-[#254d7e] focus:!border-[#254d7e] focus:!ring-2 focus:!ring-[#254d7e]/20">
+          <span class="input-hint" id="saved-amount-hint">Може бути 0 ₴; не менше нуля</span>
+        </div>
+        <div class="form-group">
+          <label class="label-text" for="monthly-contribution">Щомісячний внесок (грн)</label>
+          <input id="monthly-contribution" name="monthlyContribution" type="number" min="0.01" step="0.01" placeholder="5000" aria-describedby="monthly-contribution-hint" class="transition-colors duration-200 hover:border-[#254d7e] focus:border-[#254d7e] focus:ring-2 focus:ring-[#254d7e]/20 outline-none hover:!border-[#254d7e] focus:!border-[#254d7e] focus:!ring-2 focus:!ring-[#254d7e]/20" required>
+          <span class="input-hint" id="monthly-contribution-hint">Більше 0 ₴</span>
+        </div>
+        <div class="form-group">
+          <label class="label-text" for="annual-return">Очікувана дохідність (% річних)</label>
+          <input id="annual-return" name="annualReturn" type="number" min="0" step="0.01" placeholder="10" aria-describedby="annual-return-hint" class="transition-colors duration-200 hover:border-[#254d7e] focus:border-[#254d7e] focus:ring-2 focus:ring-[#254d7e]/20 outline-none hover:!border-[#254d7e] focus:!border-[#254d7e] focus:!ring-2 focus:!ring-[#254d7e]/20">
+          <span class="input-hint" id="annual-return-hint">Припущення для прогнозу; 0% дозволено</span>
+        </div>
+        <div class="form-actions">
+          <button class="btn calc-btn transition-all duration-200 hover:bg-[#1e3e67] active:scale-95 shadow-sm hover:shadow-md hover:!bg-[#1e3e67]" type="submit">Розрахувати дату</button>
+          <p class="form-disclaimer">Прогноз, а не гарантія. Розрахунок залежить від введених параметрів і не є фінансовою порадою.</p>
+        </div>
+      </form>
+    </section>
+
+    <section class="block-section" id="features" aria-labelledby="features-title">
+      <span class="section-tag">02 / МОЖЛИВОСТІ</span>
+      <h2 class="section-title !text-2xl sm:!text-3xl lg:!text-4xl font-sans font-bold" id="features-title">Меньше обліку. Більше ясності.</h2>
+      <ul class="cards-wrapper">
+        <li class="card bg-white rounded-xl p-6 border border-gray-100 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-md hover:border-gray-300 !bg-white !rounded-xl !p-6 !border-gray-100 hover:!shadow-md hover:!border-gray-300">
+          <article>
+            <h3 class="card-title font-sans font-bold"><img src="assets/icons/icon-calendar.svg" alt="" aria-hidden="true">Автоматичний розрахунок</h3>
+            <p class="card-text">Горизонт досягнення та помісячний розклад на основі чотирьох введених параметрів.</p>
+          </article>
+        </li>
+        <li class="card bg-white rounded-xl p-6 border border-gray-100 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-md hover:border-gray-300 !bg-white !rounded-xl !p-6 !border-gray-100 hover:!shadow-md hover:!border-gray-300">
+          <article>
+            <h3 class="card-title font-sans font-bold"><img src="assets/icons/icon-report.svg" alt="" aria-hidden="true"> Аналітичний звіт</h3>
+            <p class="card-text">Плануємо експорт фінансової стратегії, щоб ви могли повертатися до розрахунку й стежити за своїм планом.</p>
+          </article>
+        </li>
+        <li class="card bg-white rounded-xl p-6 border border-gray-100 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-md hover:border-gray-300 !bg-white !rounded-xl !p-6 !border-gray-100 hover:!shadow-md hover:!border-gray-300">
+          <article>
+            <h3 class="card-title font-sans font-bold"><img src="assets/icons/icon-security.svg" alt="" aria-hidden="true"> Приватність даних</h3>
+            <p class="card-text">Для прогнозу не потрібні банківські виписки, історія витрат або доступ до ваших рахунків.</p>
+          </article>
+        </li>
+      </ul>
+    </section>
+
+    <section class="block-section dark-bg" id="how" aria-labelledby="how-title">
+      <div class="how-intro" id="how-it-works">
+        <span class="section-tag light">03 / ЯК ЦЕ ПРАЦЮЄ</span>
+        <h2 class="section-title !text-2xl sm:!text-3xl lg:!text-4xl font-sans font-bold" id="how-title">Від наміру — до плану.</h2>
+        <p>Не потрібно вести складні таблиці. Почніть із доступних вам чисел і подивіться на ціль у часі.</p>
+      </div>
+      <ol class="steps-wrapper">
+        <li class="step-item transition-all duration-200 hover:bg-white/5 hover:translate-x-1 p-4 rounded-xl border border-transparent hover:border-white/10 !p-4 !border hover:!border-white/10">
+          <span class="step-num text-white !text-white" aria-hidden="true">01</span>
+          <h3 class="step-title text-white !text-white font-sans font-bold">Введіть чотири параметри</h3>
+          <p class="step-desc text-gray-300 !text-gray-300">Сума цілі, уже заощаджено, щомісячний внесок і очікувана дохідність. Без підключення до банку.</p>
+        </li>
+        <li class="step-item transition-all duration-200 hover:bg-white/5 hover:translate-x-1 p-4 rounded-xl border border-transparent hover:border-white/10 !p-4 !border hover:!border-white/10">
+          <span class="step-num text-white !text-white" aria-hidden="true">02</span>
+          <h3 class="step-title text-white !text-white font-sans font-bold">Отримайте горизонт і розклад</h3>
+          <p class="step-desc text-gray-300 !text-gray-300">Побачте, скільки місяців потрібно до цілі та як зростатимуть накопичення щомісяця.</p>
+        </li>
+        <li class="step-item transition-all duration-200 hover:bg-white/5 hover:translate-x-1 p-4 rounded-xl border border-transparent hover:border-white/10 !p-4 !border hover:!border-white/10">
+          <span class="step-num text-white !text-white" aria-hidden="true">03</span>
+          <h3 class="step-title text-white !text-white font-sans font-bold">Порівняйте сценарії</h3>
+          <p class="step-desc text-gray-300 !text-gray-300">Поверніться до форми й змініть внесок, стартову суму або дохідність. Оцініть, як змінюється горизонт.</p>
+        </li>
+        <li class="step-item transition-all duration-200 hover:bg-white/5 hover:translate-x-1 p-4 rounded-xl border border-transparent hover:border-white/10 !p-4 !border hover:!border-white/10">
+          <span class="step-num text-white !text-white" aria-hidden="true">04</span>
+          <h3 class="step-title text-white !text-white font-sans font-bold">Повертайтеся до свого плану</h3>
+          <p class="step-desc text-gray-300 !text-gray-300">Збереження в обліковому записі та спільний перегляд — заплановані можливості для подальшої роботи з ціллю.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="block-section" id="privacy" aria-labelledby="privacy-title">
+      <div class="privacy-intro">
+        <span class="section-tag">04 / ПРИВАТНІСТЬ</span>
+        <h2 class="section-title !text-2xl sm:!text-3xl lg:!text-4xl font-sans font-bold" id="privacy-title">Ваші плани. Не ваші платежі.</h2>
+        <div class="privacy-metric" aria-label="4 параметри, які ви вводите самі">
+          <span class="privacy-count" aria-hidden="true">4</span>
+          <span class="privacy-metric-label">параметри, які ви вводите самі</span>
+        </div>
+        <p class="privacy-desc">Сума цілі, стартові заощадження, регулярний внесок і очікувана дохідність. Цього достатньо, щоб змоделювати шлях.</p>
+      </div>
+      <ul class="privacy-list">
+        <li class="privacy-item hover:bg-gray-50/80 transition-colors rounded-lg">
+          <span class="privacy-icon" aria-hidden="true"></span>
+          <div>
+            <h3 class="privacy-item-title font-sans font-bold">Чеки й виписки</h3>
+            <p class="privacy-item-desc">Не завантажуйте скани, скріншоти або історію платежів. Для розрахунку вони не потрібні.</p>
+          </div>
+        </li>
+        <li class="privacy-item hover:bg-gray-50/80 transition-colors rounded-lg">
+          <span class="privacy-icon" aria-hidden="true"></span>
+          <div>
+            <h3 class="privacy-item-title font-sans font-bold">Рахунки й картки</h3>
+            <p class="privacy-item-desc">Симулятор не потребує підключення банківського рахунку або прив’язки картки.</p>
+          </div>
+        </li>
+        <li class="privacy-item hover:bg-gray-50/80 transition-colors rounded-lg">
+          <span class="privacy-icon" aria-hidden="true"></span>
+          <div>
+            <h3 class="privacy-item-title font-sans font-bold">Паролі від банкінгу</h3>
+            <p class="privacy-item-desc">Не вводьте банківські паролі. Сервіс не просить їх для прогнозу фінансової цілі.</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section class="block-section" id="comparison" aria-labelledby="comparison-title">
+      <span class="section-tag">05 / ПОРІВНЯННЯ</span>
+      <h2 class="section-title !text-2xl sm:!text-3xl lg:!text-4xl font-sans font-bold" id="comparison-title">Ми рахуємо майбутнє, а не стежимо за минулим.</h2>
+      <p class="comparison-desc">Облік витрат відповідає на питання «куди пішли гроші?». Потік монет допомагає зрозуміти, коли ви зможете досягти цілі. Це різні завдання, а не рейтинг застосунків.</p>
+      <table class="comparison-table">
+        <caption class="visually-hidden">Порівняння обліку витрат і сервісу «Потік монет»</caption>
+        <thead>
+          <tr class="table-row header-row">
+            <th class="table-cell" scope="col">Критерій</th>
+            <th class="table-cell" scope="col">Облік витрат</th>
+            <th class="table-cell" scope="col">Потік монет</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="table-row hover:bg-gray-50/80 transition-colors rounded-lg">
+            <th class="table-cell bold-text" scope="row">Що потрібно вводити</th>
+            <td class="table-cell">Операції та категорії витрат — вручну або через імпорт, залежно від сервісу.</td>
+            <td class="table-cell">Чотири параметри вашої фінансової цілі.</td>
+          </tr>
+          <tr class="table-row hover:bg-gray-50/80 transition-colors rounded-lg">
+            <th class="table-cell bold-text" scope="row">Що отримуєте на виході</th>
+            <td class="table-cell">Історію витрат і розподіл бюджету.</td>
+            <td class="table-cell">Прогнозований горизонт та розклад майбутніх накопичень.</td>
+          </tr>
+          <tr class="table-row hover:bg-gray-50/80 transition-colors rounded-lg">
+            <th class="table-cell bold-text" scope="row">Розрахунок без доступу до рахунків</th>
+            <td class="table-cell">Залежить від застосунку й способу внесення операцій.</td>
+            <td class="table-cell">Банківський доступ не потрібен.</td>
+          </tr>
+          <tr class="table-row hover:bg-gray-50/80 transition-colors rounded-lg">
+            <th class="table-cell bold-text" scope="row">Спільний перегляд цілі з партнером</th>
+            <td class="table-cell">Можливості спільного доступу залежать від сервісу.</td>
+            <td class="table-cell">У планах: read-only перегляд лише однієї цілі.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="block-section dark-bg" id="shared" aria-labelledby="shared-title">
+      <div class="shared-intro">
+        <span class="section-tag light">06 / СПІЛЬНИЙ ПЕРЕГЛЯД</span>
+        <h2 class="section-title !text-2xl sm:!text-3xl lg:!text-4xl font-sans font-bold" id="shared-title">Одна ціль на двох. Решта — особисте.</h2>
+        <p>Плануємо перегляд цілі за read-only посиланням. Партнер зможе побачити лише обрану мету, горизонт і розклад накопичення — без інших планів та налаштувань вашого облікового запису.</p>
+        <p>Власник зможе відкликати доступ. Збереження в обліковому записі, створення посилання та керування доступом — заплановані можливості.</p>
+      </div>
+      <article class="shared-card transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-gray-200 group" aria-label="Попередній перегляд спільної цілі">
+        <img src="assets/images/preview-card.png" alt="Картка спільного перегляду цілі з доступом лише для читання" class="group-hover:scale-105 transition-transform duration-300 ease-out">
+      </article>
+    </section>
+
+    <section class="block-section" id="reviews" aria-labelledby="reviews-title">
+      <span class="section-tag">07 / ВІДГУКИ</span>
+      <h2 class="section-title !text-2xl sm:!text-3xl lg:!text-4xl font-sans font-bold" id="reviews-title">Ясність, яку цінують.</h2>
+      <div class="reviews-grid">
+        <article class="review-card transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-gray-200 group">
+          <blockquote class="review-text">«Зручно порахувати, коли саме назбираю на авто, без підключення банківських карток.»</blockquote>
+          <p class="review-author">Олександр М.</p>
+        </article>
+        <article class="review-card transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-gray-200 group">
+          <blockquote class="review-text">«Один із найкращих інструментів, яким я коли-небудь користувався, все максимально зручно.»</blockquote>
+          <p class="review-author">Антон Т.</p>
+        </article>
+        <article class="review-card transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-gray-200 group">
+          <blockquote class="review-text">«Найпростіший калькулятор без нав'язливої реклами та складних таблиць.»</blockquote>
+          <p class="review-author">Ірина К.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="block-section" id="about" aria-labelledby="about-title">
+      <div class="about-intro">
+        <span class="text-sm font-bold tracking-wide text-[#254d7e] uppercase mb-2 block font-sans">08 / ПРО НАС</span>
+        <h2 class="section-title !text-2xl sm:!text-3xl lg:!text-4xl font-sans font-bold" id="about-title">Щоб «колись» мало свій горизонт.</h2>
+        <p class="about-text">Потік монет — інструмент моделювання фінансових цілей. Наша мета — зробити шлях до накопичень зрозумілим: перетворити чотири числа на послідовний план, який можна переосмислювати разом зі зміною обставин.</p>
+      </div>
+      <div class="about-content">
+        <figure class="about-media overflow-hidden rounded-2xl border border-white/10 shadow-lg group">
+          <img src="assets/images/about-img.png" alt="Вигин річки серед лісового ландшафту" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105 brightness-95 group-hover:brightness-100 !w-full !h-full">
+          <figcaption>Ми не банк, не кредитна установа й не платіжний сервіс. Не приймаємо та не переказуємо кошти. Розрахунки не є фінансовою порадою.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="block-section py-16 md:py-24 bg-gray-50 text-gray-900 border-b border-gray-200" id="faq" aria-labelledby="faq-title">
+      <div class="faq-intro">
+        <span class="text-sm font-bold tracking-wide text-[#254d7e] uppercase mb-2 block font-sans">09 / ПИТАННЯ Й ВІДПОВІДІ</span>
+        <h2 class="section-title !text-2xl sm:!text-3xl lg:!text-4xl font-sans font-bold" id="faq-title">Перед тим, як почати.</h2>
+        <p>Про точність, дані та можливості сервісу — без дрібного шрифту.</p>
+      </div>
+      <div class="faq-wrapper">
+        <div class="faq-item p-5 rounded-xl transition-all duration-200 hover:bg-white hover:shadow-sm border border-transparent hover:border-gray-100 group cursor-pointer !p-5 !border-transparent hover:!bg-white hover:!border-gray-100">
+          <h3 class="faq-question font-bold font-sans text-[#0d1829] group-hover:text-[#254d7e] transition-colors !text-[#0d1829] group-hover:!text-[#254d7e]">Чи потрібно підключати банківський рахунок?</h3>
+          <p class="faq-answer">Ні. Розрахунок будується на чотирьох числах, які ви вводите вручну. Сервіс не просить доступу до рахунків, карток чи паролів від банкінгу.</p>
+        </div>
+        <div class="faq-item p-5 rounded-xl transition-all duration-200 hover:bg-white hover:shadow-sm border border-transparent hover:border-gray-100 group cursor-pointer !p-5 !border-transparent hover:!bg-white hover:!border-gray-100">
+          <h3 class="faq-question font-bold font-sans text-[#0d1829] group-hover:text-[#254d7e] transition-colors !text-[#0d1829] group-hover:!text-[#254d7e]">Наскільки точний прогноз?</h3>
+          <p class="faq-answer">Це модель за незмінних внесків і вказаної очікуваної дохідності, а не гарантія. Зміна будь-якого параметра змінює горизонт. Без початкової календарної дати показуємо кількість місяців, а не конкретну дату.</p>
+        </div>
+        <div class="faq-item p-5 rounded-xl transition-all duration-200 hover:bg-white hover:shadow-sm border border-transparent hover:border-gray-100 group cursor-pointer !p-5 !border-transparent hover:!bg-white hover:!border-gray-100">
+          <h3 class="faq-question font-bold font-sans text-[#0d1829] group-hover:text-[#254d7e] transition-colors !text-[#0d1829] group-hover:!text-[#254d7e]">Ви збираєте дані про мої витрати?</h3>
+          <p class="faq-answer">Для прогнозу не потрібні історія витрат, скани чеків або банківські виписки. Ви самостійно вводите суму цілі, заощадження, щомісячний внесок і дохідність.</p>
+        </div>
+        <div class="faq-item p-5 rounded-xl transition-all duration-200 hover:bg-white hover:shadow-sm border border-transparent hover:border-gray-100 group cursor-pointer !p-5 !border-transparent hover:!bg-white hover:!border-gray-100">
+          <h3 class="faq-question font-bold font-sans text-[#0d1829] group-hover:text-[#254d7e] transition-colors !text-[#0d1829] group-hover:!text-[#254d7e]">Що саме побачить партнер у спільному перегляді?</h3>
+          <p class="faq-answer">У запланованому read-only перегляді — лише обрану ціль, прогнозований горизонт і розклад. Інші плани та налаштування залишаться недоступними. Власник зможе відкликати доступ.</p>
+        </div>
+        <div class="faq-item p-5 rounded-xl transition-all duration-200 hover:bg-white hover:shadow-sm border border-transparent hover:border-gray-100 group cursor-pointer !p-5 !border-transparent hover:!bg-white hover:!border-gray-100">
+          <h3 class="faq-question font-bold font-sans text-[#0d1829] group-hover:text-[#254d7e] transition-colors !text-[#0d1829] group-hover:!text-[#254d7e]">Ви банк або кредитна установа?</h3>
+          <p class="faq-answer">Ні. Потік монет — інструмент моделювання. Ми не відкриваємо рахунки, не кредитуємо й не проводимо платежі. Прогноз не є фінансовою порадою.</p>
+        </div>
+        <div class="faq-item p-5 rounded-xl transition-all duration-200 hover:bg-white hover:shadow-sm border border-transparent hover:border-gray-100 group cursor-pointer !p-5 !border-transparent hover:!bg-white hover:!border-gray-100">
+          <h3 class="faq-question font-bold font-sans text-[#0d1829] group-hover:text-[#254d7e] transition-colors !text-[#0d1829] group-hover:!text-[#254d7e]">Чи можна вивантажити свій план?</h3>
+          <p class="faq-answer">Аналітичний звіт та експорт плану — заплановані можливості. Вони мають допомогти повертатися до фінансової стратегії; зараз не пропонуємо їх як доступну дію.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="block-section py-16 md:py-24 bg-[#0d1829] text-white" id="media" aria-labelledby="media-title">
+      <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <span class="text-sm font-bold tracking-wide text-white/70 uppercase mb-2 block font-sans">10 / КОРИСНІ МАТЕРІАЛИ</span>
+        <h2 id="media-title" class="text-3xl md:text-4xl font-bold font-sans text-white mb-4">Плануйте з опорою на знання</h2>
+        <p class="text-gray-300 font-sans max-w-2xl mb-10">Коротке відео про особисті фінанси та офіційні курси валют допоможуть оцінювати цілі в ширшому контексті. Курси мають довідковий характер і не впливають на розрахунок симулятора.</p>
+        <div class="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-2">
+          <article class="min-w-0 overflow-hidden rounded-2xl bg-white p-4 text-gray-900 shadow-sm sm:p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:border-white/20 border border-transparent">
+            <h3 class="mb-3 text-xl font-bold font-sans text-gray-900">Основи фінансової грамотності</h3>
+            <!-- Адаптивне вбудоване відео: контейнер зберігає пропорцію 16:9. -->
+            <div class="aspect-video w-full overflow-hidden rounded-xl bg-slate-900">
+              <iframe class="h-full w-full border-0" src="https://www.youtube-nocookie.com/embed/0sIplNkPylQ" title="Фінансова грамотність для українських студентів" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <p class="mt-3 text-sm text-slate-600">Відео стороннього автора. Перегляд відкриває плеєр YouTube.</p>
+          </article>
+          <aside class="min-w-0 rounded-2xl bg-white p-4 text-gray-900 shadow-sm sm:p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:border-gray-200 border border-gray-100" aria-labelledby="rates-title">
+            <h3 id="rates-title" class="mb-3 text-xl font-bold font-sans text-gray-900">Курс валют НБУ</h3>
+            <p class="text-slate-600">Офіційний курс щодо гривні. Дані завантажуються з Національного банку України.</p>
+            <p id="exchange-status" class="mt-4 text-sm text-slate-600" role="status">Завантаження курсів…</p>
+            <dl id="exchange-rates" class="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2"></dl>
+            <a class="mt-4 inline-block text-[#254d7e] underline hover:underline hover:text-[#254d7e] transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#254d7e]" href="https://bank.gov.ua/ua/markets/exchangerates" target="_blank" rel="noopener noreferrer">Перевірити курси на сайті НБУ</a>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="block-section py-16 md:py-24 bg-white border-t border-gray-100" id="location" aria-labelledby="location-title">
+      <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <span class="text-sm font-bold tracking-wide text-[#254d7e] uppercase mb-2 block font-sans">11 / ЛОКАЦІЯ ПРОЄКТУ</span>
+        <h2 id="location-title" class="text-3xl md:text-4xl font-bold font-sans text-[#0d1829] mb-3">Де створено навчальний проєкт</h2>
+        <p class="section-desc">Львівська політехніка, Львів. «Потік монет» працює онлайн і не має офісу для прийому клієнтів.</p>
+        <!-- Адаптивна карта Google Maps: iframe заповнює контейнер і не має фіксованої ширини. -->
+        <div class="mt-6 h-72 w-full overflow-hidden rounded-2xl shadow-md border border-gray-200 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-gray-300 group sm:h-96">
+          <iframe class="h-full w-full border-0" src="https://www.google.com/maps?q=49.8359%2C24.0145&amp;z=16&amp;output=embed" title="Google Maps: Національний університет Львівська політехніка" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section class="block-section cta-block" id="cta" aria-labelledby="cta-title">
+      <div class="cta-copy">
+        <span class="section-tag">12 / ВАШ НАСТУПНИЙ КРОК</span>
+        <h2 class="section-title !text-2xl sm:!text-3xl lg:!text-4xl font-sans font-bold" id="cta-title">Почніть рух до своєї фінансової мети.</h2>
+        <p class="cta-desc">Чотири параметри. Без реєстрації та доступу до банку.</p>
+      </div>
+      <div class="cta-btn-wrap">
+        <a href="result.html" class="btn transition-all duration-200 hover:bg-[#1e3e67] active:scale-95">Запустити симулятор</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer !bg-[#0d1829] !text-white">
+    <div class="footer-columns !grid-cols-1 sm:!grid-cols-2 lg:!grid-cols-4 !px-4 sm:!px-6 lg:!px-8">
+      <nav class="footer-col" aria-label="Планування">
+        <h2 class="col-title !text-white font-sans font-bold">Планування</h2>
+        <ul>
+          <li class="col-link !text-slate-300 hover:bg-gray-50/80 transition-colors rounded-lg"><a href="#simulator" class="hover:text-[#254d7e] hover:underline transition-colors">Симулятор</a></li>
+          <li class="col-link !text-slate-300 hover:bg-gray-50/80 transition-colors rounded-lg"><a href="#features" class="hover:text-[#254d7e] hover:underline transition-colors">Можливості</a></li>
+          <li class="col-link !text-slate-300 hover:bg-gray-50/80 transition-colors rounded-lg"><a href="#reviews" class="hover:text-[#254d7e] hover:underline transition-colors">Відгуки</a></li>
+        </ul>
+      </nav>
+      <nav class="footer-col" aria-label="Довіра">
+        <h2 class="col-title !text-white font-sans font-bold">Довіра</h2>
+        <ul>
+          <li class="col-link !text-slate-300 hover:bg-gray-50/80 transition-colors rounded-lg"><a href="#privacy" class="hover:text-[#254d7e] hover:underline transition-colors">Приватність</a></li>
+          <li class="col-link !text-slate-300 hover:bg-gray-50/80 transition-colors rounded-lg"><a href="#comparison" class="hover:text-[#254d7e] hover:underline transition-colors">Порівняння</a></li>
+          <li class="col-link !text-slate-300 hover:bg-gray-50/80 transition-colors rounded-lg"><a href="#how" class="hover:text-[#254d7e] hover:underline transition-colors">Як це працює</a></li>
+          <li class="col-link !text-slate-300 hover:bg-gray-50/80 transition-colors rounded-lg"><a href="#shared" class="hover:text-[#254d7e] hover:underline transition-colors">Спільний перегляд</a></li>
+          <li class="col-link !text-slate-300 hover:bg-gray-50/80 transition-colors rounded-lg"><a href="demo-goal.html" class="hover:text-[#254d7e] hover:underline transition-colors">Приклад цілі</a></li>
+        </ul>
+      </nav>
+      <nav class="footer-col" aria-label="Про сервіс">
+        <h2 class="col-title !text-white font-sans font-bold">Про сервіс</h2>
+        <ul>
+          <li class="col-link !text-slate-300 hover:bg-gray-50/80 transition-colors rounded-lg"><a href="#about" class="hover:text-[#254d7e] hover:underline transition-colors">Про нас</a></li>
+          <li class="col-link !text-slate-300 hover:bg-gray-50/80 transition-colors rounded-lg"><a href="#faq" class="hover:text-[#254d7e] hover:underline transition-colors">Питання й відповіді</a></li>
+          <li class="col-link !text-slate-300 hover:bg-gray-50/80 transition-colors rounded-lg"><a href="#cta" class="hover:text-[#254d7e] hover:underline transition-colors">Почати рух до цілі</a></li>
+        </ul>
+      </nav>
+      <section class="footer-col" aria-labelledby="footer-contact-title">
+        <h2 class="col-title !text-white font-sans font-bold" id="footer-contact-title">Зв’язок</h2>
+        <ul class="mt-3">
+          <li class="col-link !text-slate-300 hover:bg-gray-50/80 transition-colors rounded-lg"><a href="index.html#faq" class="hover:text-white hover:underline transition-colors">Переглянути відповіді</a></li>
+          <li class="col-link !text-slate-300 hover:bg-gray-50/80 transition-colors rounded-lg"><a href="result.html" class="hover:text-white hover:underline transition-colors">Поставити ціль</a></li>
+        </ul>
+      </section>
+    </div>
+    <div class="footer-bottom !border-slate-700 !bg-[#0d1829] !text-slate-300">
+      <p class="copyright">&copy; 2026 Потік монет. Усі права захищені.</p>
+    </div>
+  </footer>
+  <script src="js/script.js" defer></script>
+  <div class="mobile-menu-overlay" id="mobile-menu-overlay" aria-hidden="true">
+    <div class="mobile-menu-header">
+      <span>МЕНЮ</span>
+      <button class="close-menu transition-all duration-200 hover:bg-[#1e3e67] active:scale-95" type="button"><span>Закрити</span><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+    </div>
+    <h2 class="font-sans font-bold">Знайдіть свій розділ.</h2>
+    <section class="mobile-owner-card transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-gray-200 group" aria-label="Поточна сторінка власника">
+      <span>СТОРІНКА ВЛАСНИКА</span>
+      <strong>Головна</strong>
+    </section>
+    <nav class="mobile-menu-section" aria-label="Планування">
+      <h3 class="font-sans font-bold">ПЛАНУВАННЯ</h3>
+      <ul>
+        <li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a class="active hover:text-[#254d7e] hover:underline transition-colors" href="index.html#top" aria-current="page"><span>Головна</span><span class="mobile-menu-current">Ви тут</span></a></li>
+        <li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="result.html" class="hover:text-[#254d7e] hover:underline transition-colors"><span>Результат</span><span class="mobile-menu-arrow" aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></span></a></li>
+        <li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="goals.html" class="hover:text-[#254d7e] hover:underline transition-colors"><span>Мої цілі</span><span class="mobile-menu-arrow" aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></span></a></li>
+        <li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="shared.html" class="hover:text-[#254d7e] hover:underline transition-colors"><span>Спільний перегляд</span><span class="mobile-menu-arrow" aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></span></a></li>
+        <li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="demo-goal.html" class="hover:text-[#254d7e] hover:underline transition-colors"><span>Приклад цілі</span><span class="mobile-menu-arrow" aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></span></a></li>
+      </ul>
+    </nav>
+    <nav class="mobile-menu-section" aria-label="Розділи головної">
+      <h3 class="font-sans font-bold">РОЗДІЛИ ГОЛОВНОЇ</h3>
+      <ul>
+        <li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="index.html#features" class="hover:text-[#254d7e] hover:underline transition-colors">Можливості</a></li>
+        <li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="index.html#how-it-works" class="hover:text-[#254d7e] hover:underline transition-colors">Як це працює</a></li>
+        <li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="index.html#privacy" class="hover:text-[#254d7e] hover:underline transition-colors">Приватність</a></li>
+        <li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="index.html#comparison" class="hover:text-[#254d7e] hover:underline transition-colors">Порівняння</a></li>
+        <li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="index.html#reviews" class="hover:text-[#254d7e] hover:underline transition-colors">Відгуки</a></li>
+        <li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="index.html#about" class="hover:text-[#254d7e] hover:underline transition-colors">Про нас</a></li>
+        <li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="index.html#faq" class="hover:text-[#254d7e] hover:underline transition-colors">Питання й відповіді</a></li>
+      </ul>
+    </nav>
+    <a href="index.html#simulator" class="mt-6 inline-flex w-full md:w-auto !min-h-[44px] items-center justify-center rounded-xl bg-[#254d7e] px-5 py-3 font-semibold text-white transition hover:bg-[#1e3e67] transition-all duration-200 active:scale-95">Створити ціль</a>
+    <p class="mobile-menu-disclaimer">Чотири параметри. Без реєстрації та підключення банку для розрахунку.</p>
+  </div>
+</body>
+</html>
