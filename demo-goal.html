@@ -11,14 +11,10 @@
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 	<link rel="stylesheet" href="css/style.css">
-</head>
+<link rel="stylesheet" href="css/theme.css"><script src="js/theme.js"></script></head>
 <body id="top">
 	<header class="header">
-		<div class="header-logo">
-			<a href="index.html#top" aria-label="Потік монет — на головну сторінку">
-				<img src="assets/icons/logo.svg" alt="Потік монет">
-			</a>
-		</div>
+		<div class="header-logo project-brand"><img src="assets/icons/logo.svg" alt=""><span>Потік монет</span><button type="button" class="theme-toggle" aria-label="Темна тема" aria-pressed="false" title="Темна тема"><span aria-hidden="true">☾</span></button></div>
 		<button class="menu-toggle transition-all duration-200 hover:bg-[#1e3e67] active:scale-95" type="button" aria-label="Відкрити меню" aria-controls="mobile-menu-overlay" aria-expanded="false">
 			<i class="fa-solid fa-bars" aria-hidden="true"></i>
 		</button>
@@ -29,7 +25,7 @@
 				<li class="nav-item hover:bg-gray-50/80 transition-colors rounded-lg"><a href="goals.html" class="hover:text-[#254d7e] hover:underline transition-colors">Мої цілі</a></li>
 				<li class="nav-item hover:bg-gray-50/80 transition-colors rounded-lg"><a href="shared.html" class="hover:text-[#254d7e] hover:underline transition-colors">Спільний перегляд</a></li>
 				<li class="nav-item active hover:bg-gray-50/80 transition-colors rounded-lg"><a href="demo-goal.html" aria-current="page" class="hover:text-[#254d7e] hover:underline transition-colors">Приклад цілі</a></li>
-			</ul>
+			<li class="nav-item"><a href="deadline.html">План до дати</a></li></ul>
 		</nav>
 	</header>
 
@@ -176,7 +172,7 @@
 		</div>
 	</footer>
 
-	<script src="js/script.js" defer></script>
+	<script src="js/script.js" defer></script><script src="js/planner.js" defer></script>
 	<div class="mobile-menu-overlay" id="mobile-menu-overlay" aria-hidden="true">
 		<div class="mobile-menu-header">
 			<span>МЕНЮ</span>
@@ -195,7 +191,7 @@
 				<li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="goals.html" class="hover:text-[#254d7e] hover:underline transition-colors"><span>Мої цілі</span><span class="mobile-menu-arrow" aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></span></a></li>
 				<li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="shared.html" class="hover:text-[#254d7e] hover:underline transition-colors"><span>Спільний перегляд</span><span class="mobile-menu-arrow" aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></span></a></li>
 				<li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a class="active hover:text-[#254d7e] hover:underline transition-colors" href="demo-goal.html" aria-current="page"><span>Приклад цілі</span><span class="mobile-menu-current">Ви тут</span></a></li>
-			</ul>
+			<li class="nav-item"><a href="deadline.html">План до дати</a></li></ul>
 		</nav>
 		<nav class="mobile-menu-section" aria-label="Розділи головної">
 			<h3>РОЗДІЛИ ГОЛОВНОЇ</h3>
@@ -213,3 +209,6 @@
 	</div>
 </body>
 </html>
+
+
+

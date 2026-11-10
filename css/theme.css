@@ -1,0 +1,34 @@
+.theme-toggle { display:inline-grid; place-items:center; flex:none; width:38px; height:38px; margin-inline-start:10px; border:1px solid #becdc4; border-radius:50%; background:#eff4ef; color:#244b3a; cursor:pointer; }
+.theme-toggle > span { font: 22px/1 system-ui !important; }
+.theme-toggle:focus-visible {outline:3px solid #70a78c;outline-offset:2px}
+html[data-theme="dark"] {
+ color-scheme:dark;
+ --bg-primary:#101a22; --bg-header:#16232d; --bg-muted:#1c2c32; --bg-simulator:#17272f;
+ --color-text:#e6efe9; --color-text-soft:#dceae2; --color-muted:#b1c1bd; --color-muted-strong:#c5d1cf;
+ --color-surface-subtle:#131f28; --color-surface-gray:#192833; --color-card:#1d2e39;
+ --color-bg-light:#20352f; --color-pale-green:#294239; --color-pale-gray:#263945;
+ --color-brand-green:#abcdb8; --color-forest:#72a58a; --color-text-gray:#b4c5bc;
+ --color-border:#384a50; --color-border-light:#34464e; --color-border-subtle:#30414b;
+ --color-divider:#41555b; --color-soft-border:#476054; --color-input-border:#52676e;
+ --color-row-border:#354851; --color-border-gray:#34474f; --color-chart:#709ac5; --color-chart-final:#8abe9c;
+ --color-action:#a4c9ee; --color-header-cta:#335c83; --color-header-cta-hover:#406c96;
+ --color-hero-button-text:#172b22; --color-focus:#a4dcb6;
+}
+html[data-theme="dark"] body {background:#101a22;color:var(--color-text)}
+html[data-theme="dark"] :is(body > header,.footer-simple,.footer-bottom,.calculator-form,.card,.goal-card,.sharing-controls,.shared-progress-card,.demo-parameters,.demo-timeline,.result-table,.deadline-page .result-parameters,[class*="bg-white"],[class*="bg-gray-50"],[class*="bg-slate-50"],[class*="bg-[#edf4ee]"]) {background-color:#1c2c36 !important;color:var(--color-text);border-color:#384a50 !important}
+html[data-theme="dark"] :is(#features,#reviews,#comparison,#faq,#location,.goals-sharing,.shared-details) {background-color:#15222b !important;color:var(--color-text)}
+html[data-theme="dark"] :is(.project-brand > span,.header-nav a,.form-title,.card-title,.section-title,.faq-question,[class*="text-gray-9"],[class*="text-[#0d1829]"],[class*="text-emerald-8"]) {color:#e5efe9 !important}
+html[data-theme="dark"] :is([class*="text-slate-6"],[class*="text-gray-6"],.faq-answer,.goal-disclaimer,.section-desc) {color:#bacac7 !important}
+html[data-theme="dark"] :is(input,select,textarea,#simulator input) {background-color:#12212a !important;border-color:#53676e !important;color:#eff6f2 !important}
+html[data-theme="dark"] :is(.header-nav .active a,.mobile-menu-section a.active) {background:#304c40 !important;color:#d9f1df !important}
+html[data-theme="dark"] :is(.header-nav li:hover,.faq-item:hover,.result-table tr:hover,#comparison .comparison-table,.comparison-table tr,.comparison-table td,.comparison-table th) {background-color:#22343d !important;color:#e5efe9}
+html[data-theme="dark"] .theme-toggle {background:#293e39;color:#d7eacb;border-color:#50675a}
+html[data-theme="dark"] .project-brand img {filter:drop-shadow(0 0 2px #d1e3d6)}
+html[data-theme="dark"] .project-brand {color:#e5efe9}
+html[data-theme="dark"] .hero-block .btn {color:#172b22}
+html[data-theme="dark"] .deadline-launch .btn {color:#172b22;background:#b5d6bb}
+html[data-theme="dark"] :is(.btn-light-green,.shared-readonly-badge,.badge) {color:#dbefdf;background:#30473b}
+html[data-theme="dark"] :is(.menu-toggle,.menu-toggle .fa-bars,[class*="text-[#254d7e]"]:not(.btn),.section-tag:not(.light)) {color:#afcce7 !important}
+html[data-theme="dark"] :is(.result-bar,.demo-year-track span) {background-color:#8baed0}
+html[data-theme="dark"] :is(.result-bar.is-final,.demo-year-list .is-final .demo-year-track span) {background-color:#98c6a6}
+html[data-theme="dark"] .theme-toggle:hover {background-color:#345047}

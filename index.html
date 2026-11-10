@@ -14,17 +14,12 @@
   <!-- Font Awesome 6 Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
-</head>
+<link rel="stylesheet" href="css/theme.css"><script src="js/theme.js"></script></head>
 <body id="top">
 <header class="w-full bg-white border-b border-gray-100 sticky top-0 z-50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-20">
-      <div class="header-logo flex items-center">
-        <a href="#top" aria-label="Потік монет — на початок сторінки" class="flex items-center gap-3 focus:outline-none hover:text-[#254d7e] hover:underline transition-colors">
-          <img src="assets/icons/logo.svg" alt="Потік монет">
-          <span class="text-xl font-bold text-[#0d1829]">Потік монет</span>
-        </a>
-      </div>
+      <div class="header-logo project-brand"><img src="assets/icons/logo.svg" alt=""><span>Потік монет</span><button type="button" class="theme-toggle" aria-label="Темна тема" aria-pressed="false" title="Темна тема"><span aria-hidden="true">☾</span></button></div>
       <button class="menu-toggle md:hidden p-2 text-gray-700 transition-all duration-200 hover:bg-[#1e3e67] active:scale-95" type="button" aria-label="Відкрити меню" aria-controls="mobile-menu-overlay" aria-expanded="false">
         <i class="fa-solid fa-bars text-xl" aria-hidden="true"></i>
       </button>
@@ -34,10 +29,10 @@
           <li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="goals.html" class="text-gray-700 hover:text-[#254d7e] font-medium transition hover:underline transition-colors">Мої цілі</a></li>
           <li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="shared.html" class="text-gray-700 hover:text-[#254d7e] font-medium transition hover:underline transition-colors">Спільний перегляд</a></li>
           <li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="demo-goal.html" class="text-gray-700 hover:text-[#254d7e] font-medium transition hover:underline transition-colors">Приклад цілі</a></li>
-        </ul>
+          <li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="deadline.html" class="text-gray-700 hover:text-[#254d7e] font-medium transition hover:underline transition-colors">План до дати</a></li></ul>
       </nav>
       <div class="hidden md:block">
-        <a href="result.html" class="inline-flex items-center justify-center px-6 py-2.5 bg-[#254d7e] hover:bg-[#1e3e67] text-white font-semibold rounded-lg transition shadow-sm transition-all duration-200 active:scale-95">
+        <a href="#simulator" class="inline-flex items-center justify-center px-6 py-2.5 bg-[#254d7e] hover:bg-[#1e3e67] text-white font-semibold rounded-lg transition shadow-sm transition-all duration-200 active:scale-95">
           Створити ціль
         </a>
       </div>
@@ -73,11 +68,11 @@
         <span class="section-tag">01 / СИМУЛЯТОР</span>
         <h2 class="section-title !text-2xl sm:!text-3xl lg:!text-4xl font-sans font-bold" id="simulator-title">Чотири числа. Один зрозумілий горизонт.</h2>
         <p class="section-desc">Задайте суму й комфортний щомісячний внесок. Симулятор побудує прогноз і повний розклад накопичення — місяць за місяцем.</p>
-        <p class="bold-text">Почніть із власного темпу</p>
+        <p class="bold-text">Почніть із власного темпу</p><div class="deadline-launch"><a href="deadline.html" class="btn !bg-[#254d7e] !text-white hover:!bg-[#1e3e67]">План до дати</a></div>
         <p class="small-text">У прикладі: ціль 50 000 ₴ та внесок 5 000 ₴ на місяць. Уже заощаджено 0 ₴, очікувана дохідність — 0% річних.</p>
         <p class="small-text">Змінюйте параметри, щоб порівняти сценарії. Для першого розрахунку обліковий запис не потрібен.</p>
       </div>
-      <form class="calculator-form transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:!shadow-xl hover:!-translate-y-1" action="#cta" aria-label="Калькулятор фінансової цілі">
+      <form class="calculator-form transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:!shadow-xl hover:!-translate-y-1" action="result.html" aria-label="Калькулятор фінансової цілі">
         <h3 class="form-title font-sans font-bold">Симулятор фінансової цілі</h3>
         <img class="form-settings-icon" src="assets/icons/icon-settings.svg" alt="" aria-hidden="true">
         <div class="form-group">
@@ -100,7 +95,7 @@
           <input id="annual-return" name="annualReturn" type="number" min="0" step="0.01" placeholder="10" aria-describedby="annual-return-hint" class="transition-colors duration-200 hover:border-[#254d7e] focus:border-[#254d7e] focus:ring-2 focus:ring-[#254d7e]/20 outline-none hover:!border-[#254d7e] focus:!border-[#254d7e] focus:!ring-2 focus:!ring-[#254d7e]/20">
           <span class="input-hint" id="annual-return-hint">Припущення для прогнозу; 0% дозволено</span>
         </div>
-        <div class="form-actions">
+        <input type="hidden" name="id"><input type="hidden" name="title"><div class="form-actions">
           <button class="btn calc-btn transition-all duration-200 hover:bg-[#1e3e67] active:scale-95 shadow-sm hover:shadow-md hover:!bg-[#1e3e67]" type="submit">Розрахувати дату</button>
           <p class="form-disclaimer">Прогноз, а не гарантія. Розрахунок залежить від введених параметрів і не є фінансовою порадою.</p>
         </div>
@@ -109,7 +104,7 @@
 
     <section class="block-section" id="features" aria-labelledby="features-title">
       <span class="section-tag">02 / МОЖЛИВОСТІ</span>
-      <h2 class="section-title !text-2xl sm:!text-3xl lg:!text-4xl font-sans font-bold" id="features-title">Меньше обліку. Більше ясності.</h2>
+      <h2 class="section-title !text-2xl sm:!text-3xl lg:!text-4xl font-sans font-bold" id="features-title">Менше обліку. Більше ясності.</h2>
       <ul class="cards-wrapper">
         <li class="card bg-white rounded-xl p-6 border border-gray-100 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-md hover:border-gray-300 !bg-white !rounded-xl !p-6 !border-gray-100 hover:!shadow-md hover:!border-gray-300">
           <article>
@@ -358,7 +353,7 @@
         <p class="cta-desc">Чотири параметри. Без реєстрації та доступу до банку.</p>
       </div>
       <div class="cta-btn-wrap">
-        <a href="result.html" class="btn transition-all duration-200 hover:bg-[#1e3e67] active:scale-95">Запустити симулятор</a>
+        <a href="#simulator" class="btn transition-all duration-200 hover:bg-[#1e3e67] active:scale-95">Запустити симулятор</a>
       </div>
     </section>
   </main>
@@ -369,7 +364,7 @@
         <h2 class="col-title !text-white font-sans font-bold">Планування</h2>
         <ul>
           <li class="col-link !text-slate-300 hover:bg-gray-50/80 transition-colors rounded-lg"><a href="#simulator" class="hover:text-[#254d7e] hover:underline transition-colors">Симулятор</a></li>
-          <li class="col-link !text-slate-300 hover:bg-gray-50/80 transition-colors rounded-lg"><a href="#features" class="hover:text-[#254d7e] hover:underline transition-colors">Можливості</a></li>
+          <li class="col-link !text-slate-300 hover:bg-gray-50/80 transition-colors rounded-lg"><a href="deadline.html">План до дати</a></li><li class="col-link !text-slate-300 hover:bg-gray-50/80 transition-colors rounded-lg"><a href="#features" class="hover:text-[#254d7e] hover:underline transition-colors">Можливості</a></li>
           <li class="col-link !text-slate-300 hover:bg-gray-50/80 transition-colors rounded-lg"><a href="#reviews" class="hover:text-[#254d7e] hover:underline transition-colors">Відгуки</a></li>
         </ul>
       </nav>
@@ -395,7 +390,8 @@
         <h2 class="col-title !text-white font-sans font-bold" id="footer-contact-title">Зв’язок</h2>
         <ul class="mt-3">
           <li class="col-link !text-slate-300 hover:bg-gray-50/80 transition-colors rounded-lg"><a href="index.html#faq" class="hover:text-white hover:underline transition-colors">Переглянути відповіді</a></li>
-          <li class="col-link !text-slate-300 hover:bg-gray-50/80 transition-colors rounded-lg"><a href="result.html" class="hover:text-white hover:underline transition-colors">Поставити ціль</a></li>
+          <li class="col-link !text-slate-300 hover:bg-gray-50/80 transition-colors rounded-lg"><a href="contact.html" class="hover:text-white hover:underline transition-colors">Форма зворотного зв’язку</a></li>
+          <li class="col-link !text-slate-300 hover:bg-gray-50/80 transition-colors rounded-lg"><a href="#simulator" class="hover:text-white hover:underline transition-colors">Поставити ціль</a></li>
         </ul>
       </section>
     </div>
@@ -403,7 +399,7 @@
       <p class="copyright">&copy; 2026 Потік монет. Усі права захищені.</p>
     </div>
   </footer>
-  <script src="js/script.js" defer></script>
+  <script src="js/script.js" defer></script><script src="js/planner.js" defer></script>
   <div class="mobile-menu-overlay" id="mobile-menu-overlay" aria-hidden="true">
     <div class="mobile-menu-header">
       <span>МЕНЮ</span>
@@ -422,7 +418,7 @@
         <li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="goals.html" class="hover:text-[#254d7e] hover:underline transition-colors"><span>Мої цілі</span><span class="mobile-menu-arrow" aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></span></a></li>
         <li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="shared.html" class="hover:text-[#254d7e] hover:underline transition-colors"><span>Спільний перегляд</span><span class="mobile-menu-arrow" aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></span></a></li>
         <li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="demo-goal.html" class="hover:text-[#254d7e] hover:underline transition-colors"><span>Приклад цілі</span><span class="mobile-menu-arrow" aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></span></a></li>
-      </ul>
+        <li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="deadline.html" class="hover:text-[#254d7e] hover:underline transition-colors">План до дати</a></li></ul>
     </nav>
     <nav class="mobile-menu-section" aria-label="Розділи головної">
       <h3 class="font-sans font-bold">РОЗДІЛИ ГОЛОВНОЇ</h3>
@@ -441,3 +437,8 @@
   </div>
 </body>
 </html>
+
+
+
+
+

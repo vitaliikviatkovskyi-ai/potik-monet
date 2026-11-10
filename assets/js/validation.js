@@ -4,7 +4,7 @@ const modal = document.getElementById('successModal');
 const closeButton = document.getElementById('closeModalBtn');
 const fields = ['username', 'email', 'phone', 'message', 'agreement'];
 const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-const phonePattern = /^\+380\d{9}$/;
+const phonePattern = /^(?:0|\+?380)?[1-9]\d{8}$/;
 let returnFocus = null;
 
 function showError(id, message) {
@@ -12,7 +12,9 @@ function showError(id, message) {
   input.classList.remove('border-green-500');
   input.classList.add('border-red-500');
   input.setAttribute('aria-invalid', 'true');
-  document.getElementById(`${id}Error`).textContent = message;
+  const errorEl = document.getElementById(`${id}Error`);
+  errorEl.textContent = message;
+  errorEl.classList.remove('hidden');
   return false;
 }
 function showSuccess(id) {
@@ -20,14 +22,18 @@ function showSuccess(id) {
   input.classList.remove('border-red-500');
   input.classList.add('border-green-500');
   input.setAttribute('aria-invalid', 'false');
-  document.getElementById(`${id}Error`).textContent = '';
+  const errorEl = document.getElementById(`${id}Error`);
+  errorEl.textContent = '';
+  errorEl.classList.add('hidden');
   return true;
 }
 function clearState(id) {
   const input = document.getElementById(id);
   input.classList.remove('border-red-500', 'border-green-500');
   input.setAttribute('aria-invalid', 'false');
-  document.getElementById(`${id}Error`).textContent = '';
+  const errorEl = document.getElementById(`${id}Error`);
+  errorEl.textContent = '';
+  errorEl.classList.add('hidden');
 }
 function validateName() {
   return document.getElementById('username').value.trim().length >= 2
@@ -39,7 +45,7 @@ function validateEmail() {
 }
 function validatePhone() {
   return phonePattern.test(document.getElementById('phone').value.trim())
-    ? showSuccess('phone') : showError('phone', 'Використайте формат +380XXXXXXXXX без пробілів.');
+    ? showSuccess('phone') : showError('phone', 'Перевірте номер телефону.');
 }
 function validateMessage() {
   return document.getElementById('message').value.trim().length >= 10
@@ -66,8 +72,6 @@ form.addEventListener('submit', event => {
     return;
   }
   returnFocus = document.activeElement;
-  form.reset();
-  fields.forEach(clearState);
   modal.classList.remove('hidden');
   modal.classList.add('flex');
   modal.setAttribute('aria-hidden', 'false');
@@ -79,6 +83,8 @@ function closeModal() {
   modal.classList.remove('flex');
   modal.setAttribute('aria-hidden', 'true');
   document.body.style.overflow = '';
+  form.reset();
+  fields.forEach(clearState);
   returnFocus?.focus();
 }
 closeButton.addEventListener('click', closeModal);
@@ -87,4 +93,27 @@ document.addEventListener('keydown', event => {
   if (modal.classList.contains('hidden')) return;
   if (event.key === 'Escape') closeModal();
   if (event.key === 'Tab') { event.preventDefault(); closeButton.focus(); }
+});
+
+const menuToggle = document.querySelector('.menu-toggle');
+const menu = document.getElementById('mobile-menu-overlay');
+const menuClose = menu.querySelector('.close-menu');
+function closeMenu() {
+  menu.classList.remove('open');
+  menu.setAttribute('aria-hidden', 'true');
+  menuToggle.setAttribute('aria-expanded', 'false');
+  document.body.classList.remove('mobile-menu-open');
+  menuToggle.focus();
+}
+menuToggle.addEventListener('click', () => {
+  menu.classList.add('open');
+  menu.setAttribute('aria-hidden', 'false');
+  menuToggle.setAttribute('aria-expanded', 'true');
+  document.body.classList.add('mobile-menu-open');
+  menuClose.focus();
+});
+menuClose.addEventListener('click', closeMenu);
+menu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && menu.classList.contains('open')) closeMenu();
 });

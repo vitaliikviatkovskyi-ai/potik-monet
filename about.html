@@ -1,0 +1,51 @@
+<!doctype html><html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Про проєкт | Потік монет</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&amp;display=swap"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"><link rel="icon" href="assets/icons/logo.svg"><link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/planner.css"><script src="https://cdn.tailwindcss.com"></script><link rel="stylesheet" href="css/theme.css"><script src="js/theme.js"></script></head><body><header class="sitebar"><div><div class="header-logo project-brand"><img src="assets/icons/logo.svg" alt=""><span>Потік монет</span><button type="button" class="theme-toggle" aria-label="Темна тема" aria-pressed="false" title="Темна тема"><span aria-hidden="true">☾</span></button></div><nav aria-label="Навігація"><a href="index.html">Головна</a><a href="deadline.html">План до дати</a><a href="index.html#simulator">Симулятор</a><a href="goals.html">Мої цілі</a><a href="demo-goal.html">Приклади</a><a href="about.html">Про проєкт</a></nav></div></header><main class="main-content"><section class="block-section" id="about" aria-labelledby="about-title">
+      <div class="about-intro">
+        <span class="section-tag light">ПРО НАС</span>
+        <h2 class="section-title !text-2xl sm:!text-3xl lg:!text-4xl" id="about-title">Щоб «колись» мало свій горизонт.</h2>
+        <p class="about-text">Потік монет — інструмент моделювання фінансових цілей. Наша мета — зробити шлях до накопичень зрозумілим: перетворити чотири числа на послідовний план, який можна переосмислювати разом зі зміною обставин.</p>
+      </div>
+      <div class="about-content">
+        <figure class="about-media overflow-hidden rounded-2xl border border-white/10 shadow-lg group">
+          <img src="assets/images/about-img.png" alt="Вигин річки серед лісового ландшафту" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105 brightness-95 group-hover:brightness-100 !w-full !h-full">
+          <figcaption>Ми не банк, не кредитна установа й не платіжний сервіс. Не приймаємо та не переказуємо кошти. Розрахунки не є фінансовою порадою.</figcaption>
+        </figure>
+      </div>
+    </section>
+<section class="block-section" id="media" aria-labelledby="media-title">
+      <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <span class="section-tag">КОРИСНІ МАТЕРІАЛИ</span>
+        <h2 id="media-title" class="section-title !text-2xl sm:!text-3xl lg:!text-4xl">Плануйте з опорою на знання</h2>
+        <p class="section-desc">Коротке відео про особисті фінанси та офіційні курси валют допоможуть оцінювати цілі в ширшому контексті. Курси мають довідковий характер і не впливають на розрахунок симулятора.</p>
+        <div class="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-2">
+          <article class="min-w-0 overflow-hidden rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
+            <h3 class="mb-3 text-xl font-bold text-[#0d1829]">Основи фінансової грамотності</h3>
+            <!-- Адаптивне вбудоване відео: контейнер зберігає пропорцію 16:9. -->
+            <div class="aspect-video w-full overflow-hidden rounded-xl bg-slate-900">
+              <iframe class="h-full w-full border-0" src="https://www.youtube-nocookie.com/embed/0sIplNkPylQ" title="Фінансова грамотність для українських студентів" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <p class="mt-3 text-sm text-slate-600">Відео стороннього автора. Перегляд відкриває плеєр YouTube.</p>
+          </article>
+          <aside class="min-w-0 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6" aria-labelledby="rates-title">
+            <h3 id="rates-title" class="mb-3 text-xl font-bold text-[#0d1829]">Курс валют НБУ</h3>
+            <p class="text-slate-600">Офіційний курс щодо гривні. Дані завантажуються з Національного банку України.</p>
+            <p id="exchange-status" class="mt-4 text-sm text-slate-600" role="status">Завантаження курсів…</p>
+            <dl id="exchange-rates" class="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2"></dl>
+            <a class="mt-4 inline-block text-[#254d7e] underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#254d7e]" href="https://bank.gov.ua/ua/markets/exchangerates" target="_blank" rel="noopener noreferrer">Перевірити курси на сайті НБУ</a>
+          </aside>
+        </div>
+      </div>
+    </section>
+<section class="block-section" id="location" aria-labelledby="location-title">
+      <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <h2 id="location-title" class="section-title !text-2xl sm:!text-3xl lg:!text-4xl">Де створено навчальний проєкт</h2>
+        <p class="section-desc">Львівська політехніка, Львів. «Потік монет» працює онлайн і не має офісу для прийому клієнтів.</p>
+        <!-- Адаптивна карта Google Maps: iframe заповнює контейнер і не має фіксованої ширини. -->
+        <div class="mt-6 h-72 w-full overflow-hidden rounded-2xl border border-slate-200 shadow-sm sm:h-96">
+          <iframe class="h-full w-full border-0" src="https://www.google.com/maps?q=49.8359%2C24.0145&amp;z=16&amp;output=embed" title="Google Maps: Національний університет Львівська політехніка" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </div>
+      </div>
+    </section></main><footer class="sitefoot">Потік монет · Навчальний проєкт</footer><script src="js/script.js" defer></script><script src="js/planner.js" defer></script></body></html>
+
+
+
+

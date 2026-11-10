@@ -4128,3 +4128,54 @@ a.logo,
 		width: calc(100% - var(--spacing-md) - var(--spacing-md));
 	}
 }
+/* Keep navigation in view while leaving room for section links. */
+body > header { position: sticky; top: 0; z-index: 100; background-color: white; }
+html { scroll-padding-top: 100px; }
+.deadline-launch { margin: 1rem 0; }
+.deadline-launch .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; }
+.header-nav a[aria-current="page"] { font-weight: 700; }
+html, body { overflow-x: clip; }
+/* Keep footer links visibly interactive in both themes. */
+.footer-col .col-link {
+  border: 1px solid transparent;
+  transition: background-color .2s ease, border-color .2s ease;
+}
+.footer-col .col-link:hover,
+.footer-col .col-link:focus-within {
+  background-color: #263d50 !important;
+  border-color: #7796a8;
+}
+.footer-col .col-link a:focus-visible {
+  outline: 2px solid #b8d9c4;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+header .project-brand { gap: 0 !important; }
+header .project-brand > span {
+  margin-inline-start: -5px;
+  font-family: var(--font-main);
+  font-size: clamp(1.125rem, 1.6vw, 1.375rem) !important;
+  font-weight: 750 !important;
+  line-height: 1.15;
+  color: #0d1829;
+  white-space: nowrap;
+}
+/* Internal pages have two occupied header columns: brand and navigation. */
+@media (min-width: 1101px) {
+  header.header { display: flex; align-items: center; justify-content: space-between; gap: clamp(20px, 3vw, 48px); }
+  header.header .header-nav { min-width: 0; width: auto; margin: 0; }
+  header.header .header-nav ul { flex-wrap: wrap; gap: 8px clamp(14px, 1.6vw, 28px); }
+  header.header .nav-item { white-space: nowrap; }
+}
+.deadline-page .result-details > .result-container { display: grid; gap: clamp(20px, 3vw, 36px); }
+.deadline-page .result-parameters { padding: clamp(18px, 3vw, 36px); border: 1px solid var(--color-border-light); border-radius: var(--radius-md); background: white; }
+.deadline-page .result-parameter-grid { grid-template-columns: repeat(3,minmax(0,1fr)); gap: clamp(16px, 2vw, 28px); margin-block: 20px; }
+.deadline-page .section-title { font-size: clamp(1.55rem, 2.3vw, 2rem); line-height: 1.2; }
+.deadline-page .form-group { min-width: 0; margin: 0; }
+.deadline-page .form-group input { width: 100%; min-width: 0; }
+.deadline-page #explain { margin-top: 10px; }
+.deadline-page #variants > div { padding: 14px 16px; border-radius: var(--radius-sm); background: var(--color-surface-subtle); }
+.deadline-page .result-note, .deadline-page #transfer { margin-top: 0; }
+@media (max-width: 700px) {
+  .deadline-page .result-parameter-grid { grid-template-columns: 1fr; gap: 14px; }
+}

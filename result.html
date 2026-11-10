@@ -13,14 +13,10 @@
 	<!-- Font Awesome 6 Icons -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 	<link rel="stylesheet" href="css/style.css">
-</head>
+<link rel="stylesheet" href="css/theme.css"><script src="js/theme.js"></script></head>
 <body id="top">
 	<header class="header">
-		<div class="header-logo">
-			<a href="index.html#top" aria-label="Потік монет — на головну сторінку">
-				<img src="assets/icons/logo.svg" alt="Потік монет" style="height: 100px; width: auto;">
-			</a>
-		</div>
+		<div class="header-logo project-brand"><img src="assets/icons/logo.svg" alt=""><span>Потік монет</span><button type="button" class="theme-toggle" aria-label="Темна тема" aria-pressed="false" title="Темна тема"><span aria-hidden="true">☾</span></button></div>
 		<button class="menu-toggle transition-all duration-200 hover:bg-[#1e3e67] active:scale-95" type="button" aria-label="Відкрити меню" aria-controls="mobile-menu-overlay" aria-expanded="false">
 			<i class="fa-solid fa-bars" aria-hidden="true"></i>
 		</button>
@@ -31,7 +27,7 @@
 				<li class="nav-item hover:bg-gray-50/80 transition-colors rounded-lg"><a href="goals.html" class="hover:text-[#254d7e] hover:underline transition-colors">Мої цілі</a></li>
 				<li class="nav-item hover:bg-gray-50/80 transition-colors rounded-lg"><a href="shared.html" class="hover:text-[#254d7e] hover:underline transition-colors">Спільний перегляд</a></li>
 				<li class="nav-item hover:bg-gray-50/80 transition-colors rounded-lg"><a href="demo-goal.html" class="hover:text-[#254d7e] hover:underline transition-colors">Приклад цілі</a></li>
-			</ul>
+			<li class="nav-item"><a href="deadline.html">План до дати</a></li></ul>
 		</nav>
 	</header>
 
@@ -130,7 +126,14 @@
 					</div>
 				</div>
 
-				<aside class="result-note" aria-label="Важлива інформація про прогноз">
+				<section class="result-parameters" style="margin-block:2rem" aria-labelledby="compare-heading">
+<h2 id="compare-heading" class="section-title">Порівняйте внески</h2>
+<dl class="result-parameter-grid" id="scenarios"></dl></section>
+<form id="save-plan" class="result-parameters"><h2 class="section-title">Зберегти в «Мої цілі»</h2>
+<label class="label-text" for="plan-name">Назва цілі</label>
+<input id="plan-name" class="border rounded-lg p-3" required maxlength="100" placeholder="Наприклад, ноутбук">
+<button class="btn result-edit-button">Зберегти ціль</button></form>
+<aside class="result-note" aria-label="Важлива інформація про прогноз">
 					<h3>Прогноз — орієнтир, а не обіцянка.</h3>
 					<p>Прогноз не є гарантією та не є фінансовою порадою. Він залежить від введених параметрів; фактичні внески й дохідність можуть змінюватися.</p>
 				</aside>
@@ -143,7 +146,7 @@
 			<p>© 2026 Потік монет. Усі права захищені. <a href="demo-goal.html" class="hover:text-[#254d7e] hover:underline transition-colors">Приклад цілі</a></p>
 		</div>
 	</footer>
-	<script src="js/script.js" defer></script>
+	<script src="js/script.js" defer></script><script src="js/planner.js" defer></script>
 	<div class="mobile-menu-overlay" id="mobile-menu-overlay" aria-hidden="true">
 		<div class="mobile-menu-header">
 			<span>МЕНЮ</span>
@@ -162,7 +165,7 @@
 				<li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="goals.html" class="hover:text-[#254d7e] hover:underline transition-colors"><span>Мої цілі</span><span class="mobile-menu-arrow" aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></span></a></li>
 				<li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="shared.html" class="hover:text-[#254d7e] hover:underline transition-colors"><span>Спільний перегляд</span><span class="mobile-menu-arrow" aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></span></a></li>
 				<li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="demo-goal.html" class="hover:text-[#254d7e] hover:underline transition-colors"><span>Приклад цілі</span><span class="mobile-menu-arrow" aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></span></a></li>
-			</ul>
+			<li class="nav-item"><a href="deadline.html">План до дати</a></li></ul>
 		</nav>
 		<nav class="mobile-menu-section" aria-label="Розділи головної">
 			<h3>РОЗДІЛИ ГОЛОВНОЇ</h3>
@@ -180,3 +183,7 @@
 	</div>
 </body>
 </html>
+
+
+
+
