@@ -17,6 +17,9 @@
 .contact-intro-badge { display: flex; flex: none; align-items: center; gap: 1rem; padding: 1.25rem 1.5rem; border: 1px solid #4e7766; border-radius: 1rem; background: #19382f; color: #e7f3eb; }
 .contact-intro-badge span { font-size: 2.5rem; line-height: 1; font-weight: 800; color: #b8d9c4; }
 .contact-intro-badge strong { line-height: 1.55; }
+.contact-intro, .contact-intro-badge, #feedbackForm { transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease; }
+.contact-intro:hover, #feedbackForm:hover { transform: translateY(-3px); box-shadow: 0 16px 36px rgb(13 24 41 / 13%); }
+.contact-intro-badge:hover { transform: translateY(-4px) scale(1.02); }
 .contact-section-heading { margin-top: 2.5rem; }
 .contact-section-heading p { margin: 0 0 .4rem; color: #315e49; font-size: .75rem; font-weight: 800; letter-spacing: .14em; }
 .contact-section-heading h2 { margin: 0; font-size: clamp(1.35rem, 2vw, 1.8rem); font-weight: 700; }
@@ -49,3 +52,4 @@ html[data-theme="dark"] .field-group .border-green-500 { border-color: #6ee7a6 !
 html[data-theme="dark"] .field-error { color: #fca5a5; }
 html[data-theme="dark"] #modalTitle, html[data-theme="dark"] #modalDescription { color: #e6efe9 !important; }
 @media (max-width: 760px) { .contact-intro-badge { display: none; } .contact-page .header-logo img { width: 64px !important; height: 64px !important; } }
+@media (prefers-reduced-motion: reduce) { .contact-intro, .contact-intro-badge, #feedbackForm { transition: none; transform: none !important; } }

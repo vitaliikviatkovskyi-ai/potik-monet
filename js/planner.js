@@ -1,8 +1,52 @@
 const params = new URLSearchParams(location.search);
 const form = document.querySelector('.calculator-form');
 const storageKey = 'potikMonetSavedGoals';
+const shareStorageKey = 'potikMonetShareLinks';
+const shareApi = '/.netlify/functions/shares';
 const money = value => Math.round(value).toLocaleString('uk-UA') + ' ₴';
 const percent = value => Math.min(100, Math.max(0, Math.round(value))) + '%';
+
+function loadShareLinks() {
+  try {
+    const links = JSON.parse(localStorage.getItem(shareStorageKey) || '{}');
+    return links && typeof links === 'object' && !Array.isArray(links) ? links : {};
+  } catch {
+    return {};
+  }
+}
+
+function saveShareLinks(links) {
+  localStorage.setItem(shareStorageKey, JSON.stringify(links));
+}
+
+function shareUrl(id) {
+  const url = new URL('shared.html', location.href);
+  url.search = new URLSearchParams({ share: id }).toString();
+  return url.href;
+}
+
+async function shareRequest(method, id = '', goal = null, secret = '') {
+  if (location.protocol === 'file:') throw new Error('Для спільного доступу відкрийте сайт через Netlify.');
+  const options = { method, headers: { Accept: 'application/json' }, cache: 'no-store' };
+  if (goal) {
+    options.headers['Content-Type'] = 'application/json';
+    options.body = JSON.stringify(goal);
+  }
+  if (secret) options.headers.Authorization = 'Bearer ' + secret;
+  let response;
+  try {
+    response = await fetch(shareApi + (id ? '?id=' + encodeURIComponent(id) : ''), options);
+  } catch {
+    throw new Error('Сервіс спільного доступу недоступний. Перевірте підключення до мережі.');
+  }
+  const data = response.status === 204 ? {} : await response.json().catch(() => ({}));
+  if (!response.ok) {
+    const error = new Error(data.error || 'Не вдалося виконати дію. Перевірте, чи сайт опубліковано з функціями Netlify.');
+    error.status = response.status;
+    throw error;
+  }
+  return data;
+}
 
 function loadSavedGoals() {
   try {
@@ -187,6 +231,181 @@ function fillCard(card, goal, selected) {
     'На старті заощаджено ' + money(goal.savedAmount) + '. Майбутні внески — прогноз.';
   card.querySelector('.goal-result-button').href = 'result.html?' + goalQuery(goal);
   card.querySelector('.goal-edit-button').href = 'index.html?' + goalQuery(goal) + '#simulator';
+  let deleteButton = card.querySelector('.goal-delete-button');
+  if (!deleteButton) {
+    deleteButton = document.createElement('button');
+    deleteButton.type = 'button';
+    deleteButton.className = 'goal-delete-button';
+    deleteButton.textContent = 'Видалити';
+    card.querySelector('.goal-actions').append(deleteButton);
+  }
+  deleteButton.setAttribute('aria-label', 'Видалити ціль «' + goal.title + '»');
+  deleteButton.addEventListener('click', async () => {
+    if (!window.confirm('Видалити ціль «' + goal.title + '»?')) return;
+    try {
+      const links = loadShareLinks();
+      const shared = links[goal.id];
+      if (shared) {
+        try {
+          await shareRequest('DELETE', shared.id, null, shared.secret);
+        } catch (error) {
+          if (error.status !== 404) throw error;
+        }
+        delete links[goal.id];
+        saveShareLinks(links);
+      }
+      const remaining = loadSavedGoals().filter(item => item.id !== goal.id);
+      localStorage.setItem(storageKey, JSON.stringify(remaining));
+      location.reload();
+    } catch (error) {
+      window.alert('Не вдалося видалити ціль: ' + error.message);
+    }
+  });
+}
+
+function initSharing(savedGoals) {
+  const select = document.querySelector('#share-goal-select');
+  if (!select) return;
+  const create = document.querySelector('#share-create');
+  const copy = document.querySelector('#share-copy');
+  const revoke = document.querySelector('#share-revoke');
+  const linkInput = document.querySelector('#share-link');
+  const open = document.querySelector('#share-open');
+  const status = document.querySelector('#share-status');
+  const exportButton = document.querySelector('#goal-export');
+  const goals = savedGoals.slice().reverse().map(parseGoal);
+  const currentGoal = () => goals.find(goal => goal.id === select.value);
+  const currentLink = () => loadShareLinks()[select.value];
+  const message = (text, error = false) => {
+    status.textContent = text;
+    status.classList.toggle('is-error', error);
+  };
+  const refresh = () => {
+    const goal = currentGoal();
+    const plan = goal ? forecast(goal) : null;
+    const link = currentLink();
+    linkInput.value = link ? shareUrl(link.id) : '';
+    open.hidden = !link;
+    if (link) open.href = linkInput.value;
+    create.textContent = link ? 'Оновити посилання' : 'Створити посилання';
+    create.disabled = !goal;
+    copy.disabled = !link;
+    revoke.disabled = !link;
+    exportButton.disabled = !goal;
+    document.querySelector('#share-preview-title').textContent = goal?.title || 'Оберіть ціль';
+    document.querySelector('#share-preview-amount').textContent = goal ? money(goal.targetAmount) : '—';
+    document.querySelector('#share-preview-horizon').textContent = goal
+      ? (plan.reached ? plan.rows.length + ' міс.' : 'Понад 100 років') : '—';
+  };
+  for (const goal of goals) {
+    const option = document.createElement('option');
+    option.value = goal.id;
+    option.textContent = goal.title;
+    select.append(option);
+  }
+  if (!goals.length) {
+    select.disabled = true;
+    message('Спочатку створіть і збережіть ціль.');
+  }
+  select.addEventListener('change', () => {
+    message('');
+    refresh();
+  });
+  create.addEventListener('click', async () => {
+    const goal = currentGoal();
+    if (!goal) return;
+    create.disabled = copy.disabled = revoke.disabled = true;
+    message('Зберігаємо посилання…');
+    try {
+      localStorage.setItem('potikShareStorageCheck', '1');
+      localStorage.removeItem('potikShareStorageCheck');
+      const links = loadShareLinks();
+      let link = links[goal.id];
+      if (link) {
+        try {
+          await shareRequest('PUT', link.id, goal, link.secret);
+        } catch (error) {
+          if (error.status !== 403 && error.status !== 404) throw error;
+          link = null;
+        }
+      }
+      if (!link) {
+        link = await shareRequest('POST', '', goal);
+        links[goal.id] = link;
+        try {
+          saveShareLinks(links);
+        } catch (error) {
+          await shareRequest('DELETE', link.id, null, link.secret).catch(() => {});
+          throw error;
+        }
+      }
+      message('Посилання готове. Одержувач побачить тільки цю ціль.');
+    } catch (error) {
+      message(error.message || 'Не вдалося створити посилання.', true);
+    } finally {
+      refresh();
+    }
+  });
+  copy.addEventListener('click', async () => {
+    if (!linkInput.value) return;
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(linkInput.value);
+      } else {
+        linkInput.select();
+        if (!document.execCommand('copy')) throw new Error('Копіювання недоступне.');
+      }
+      message('Посилання скопійовано.');
+    } catch {
+      linkInput.select();
+      message('Автоматичне копіювання недоступне. Скопіюйте виділене посилання вручну.', true);
+    }
+  });
+  revoke.addEventListener('click', async () => {
+    const link = currentLink();
+    if (!link || !window.confirm('Відкликати доступ? Це посилання перестане відкриватися.')) return;
+    create.disabled = copy.disabled = revoke.disabled = true;
+    message('Відкликаємо доступ…');
+    try {
+      try {
+        await shareRequest('DELETE', link.id, null, link.secret);
+      } catch (error) {
+        if (error.status !== 404) throw error;
+      }
+      const links = loadShareLinks();
+      delete links[select.value];
+      saveShareLinks(links);
+      message('Доступ відкликано. Старе посилання більше не працює.');
+    } catch (error) {
+      message(error.message || 'Не вдалося відкликати доступ.', true);
+    } finally {
+      refresh();
+    }
+  });
+  exportButton.addEventListener('click', () => {
+    const goal = currentGoal();
+    if (!goal) return;
+    const rows = forecast(goal).rows;
+    const data = [
+      ['Ціль', goal.title],
+      ['Сума цілі, грн', goal.targetAmount],
+      ['Уже заощаджено, грн', goal.savedAmount],
+      ['Щомісячний внесок, грн', goal.monthlyContribution],
+      ['Дохідність, % річних', goal.annualReturn],
+      [],
+      ['Місяць', 'Накопичено, грн', 'Ціль, %'],
+      ...rows.map((balance, index) => [index + 1, balance.toFixed(2), (balance / goal.targetAmount * 100).toFixed(1)])
+    ];
+    const csv = '\uFEFF' + data.map(row => row.map(value => '"' + String(value ?? '').replaceAll('"', '""') + '"').join(';')).join('\r\n');
+    const url = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' }));
+    const download = document.createElement('a');
+    download.href = url;
+    download.download = 'plan-' + goal.id.replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 40) + '.csv';
+    download.click();
+    window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+    message('План завантажено у форматі CSV.');
+  });
+  refresh();
 }
 
 function renderGoals() {
@@ -198,8 +417,13 @@ function renderGoals() {
     localStorage.setItem(storageKey, JSON.stringify(goals));
     history.replaceState(null, '', 'goals.html');
   }
+  if (goals.some(goal => !goal.id)) {
+    goals = goals.map(goal => goal.id ? goal : {...goal, id: crypto.randomUUID()});
+    localStorage.setItem(storageKey, JSON.stringify(goals));
+  }
   document.querySelectorAll('.demo-saved-goal').forEach(card => card.remove());
   document.querySelector('.goals-tab-label').textContent = 'Ваших цілей: ' + goals.length;
+  initSharing(goals);
   if (!goals.length) {
     showEmpty(document.querySelector('.goals-main'), ['.goals-selected', '.goals-forecast']);
     return;
@@ -227,23 +451,25 @@ function renderGoals() {
   forecastSection.querySelector('.forecast-metrics > div:last-child dt').textContent =
     count ? 'Разом на ' + count + '-й місяць' : 'Разом зараз';
   fillValues('.forecast-metrics dd', [money(plan.own), money(plan.income), money(plan.last)]);
-  document.querySelectorAll('.goals-sharing a[href="shared.html"]').forEach(link => {
-    link.href = 'shared.html?' + goalQuery(latest);
-  });
 }
 
-function renderShared() {
-  const goal = activeGoal();
+async function renderShared() {
   const main = document.querySelector('.shared-main');
-  if (!goal) {
-    showEmpty(main, ['.shared-hero', '.shared-info', '.shared-details']);
+  const loading = main.querySelector('#share-loading');
+  const token = params.get('share');
+  if (!token) {
+    loading.textContent = 'Відкрийте посилання, яке вам надіслав власник цілі. Створити власне можна на сторінці «Мої цілі».';
+    main.setAttribute('aria-busy', 'false');
     return;
   }
+  try {
+  const { goal: sharedGoal } = await shareRequest('GET', token);
+  const goal = parseGoal(sharedGoal);
   const plan = forecast(goal);
   const count = plan.rows.length;
   main.querySelector('.shared-goal-copy h2').textContent = goal.title;
   main.querySelector('.shared-hero-disclaimer').textContent =
-    'Перегляд параметрів цієї цілі без можливості редагування.';
+    'Це знімок параметрів цілі на момент оновлення посилання. Редагувати його одержувач не може.';
   main.querySelector('.shared-horizon-number').textContent = plan.reached ? count : '1200+';
   main.querySelector('.shared-horizon').setAttribute('aria-label', 'Прогнозований горизонт: ' + count + ' місяців до цілі');
   main.querySelector('.shared-forecast h2').textContent =
@@ -264,6 +490,18 @@ function renderShared() {
   main.querySelector('.shared-progress-card p').textContent =
     'Це початкові заощадження, а не прогноз майбутніх внесків.';
   fillSchedule(main, goal, plan);
+  for (const selector of ['.shared-hero', '.shared-info', '.shared-details']) {
+    const section = main.querySelector(selector);
+    section.hidden = false;
+    section.style.display = '';
+  }
+  loading.remove();
+  main.setAttribute('aria-busy', 'false');
+  } catch (error) {
+    loading.textContent = error.message || 'Не вдалося відкрити спільне посилання.';
+    loading.classList.add('is-error');
+    main.setAttribute('aria-busy', 'false');
+  }
 }
 
 if (form) {

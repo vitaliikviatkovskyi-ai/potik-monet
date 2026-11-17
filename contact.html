@@ -18,11 +18,10 @@
   <script src="assets/js/validation.js" defer></script>
 </head>
 <body id="top" class="contact-page">
-  <header class="w-full bg-white border-b border-gray-100 sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-20">
-        <div class="header-logo project-brand"><img src="assets/icons/logo.svg" alt=""><span>Потік монет</span><button type="button" class="theme-toggle" aria-label="Темна тема" aria-pressed="false" title="Темна тема"><span aria-hidden="true">☾</span></button></div>
-        <button class="menu-toggle md:hidden p-2 text-gray-700" type="button" aria-label="Відкрити меню" aria-controls="mobile-menu-overlay" aria-expanded="false"><i class="fa-solid fa-bars text-xl" aria-hidden="true"></i></button>
+  <header class="site-header w-full bg-white border-b border-gray-100 sticky top-0 z-50">
+    <div class="header-container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="header-row flex items-center justify-between h-20">
+        <div class="header-logo project-brand"><img src="assets/icons/logo.svg" alt=""><span>Потік монет</span></div>
         <nav class="header-nav hidden md:flex items-center" aria-label="Головна навігація">
           <ul class="flex items-center gap-8 m-0 p-0 list-none">
             <li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="result.html" class="text-gray-700 hover:text-[#254d7e] font-medium">Мій результат</a></li>
@@ -30,9 +29,10 @@
             <li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="shared.html" class="text-gray-700 hover:text-[#254d7e] font-medium">Спільний перегляд</a></li>
             <li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="demo-goal.html" class="text-gray-700 hover:text-[#254d7e] font-medium">Приклад цілі</a></li>
             <li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="deadline.html" class="text-gray-700 hover:text-[#254d7e] font-medium">План до дати</a></li>
+
           </ul>
         </nav>
-        <div class="hidden md:block"><a href="index.html" class="inline-flex items-center justify-center px-6 py-2.5 bg-[#254d7e] hover:bg-[#1e3e67] text-white font-semibold rounded-lg">На головну</a></div>
+        <div class="header-actions"><a href="index.html" class="header-action-link inline-flex items-center justify-center px-6 py-2.5 bg-[#254d7e] hover:bg-[#1e3e67] text-white font-semibold rounded-lg">На головну</a><button type="button" class="theme-toggle" aria-label="Темна тема" aria-pressed="false" title="Темна тема"><span aria-hidden="true">☾</span></button><button class="menu-toggle md:hidden p-2 text-gray-700" type="button" aria-label="Відкрити меню" aria-controls="mobile-menu-overlay" aria-expanded="false"><i class="fa-solid fa-bars text-xl" aria-hidden="true"></i></button></div>
       </div>
     </div>
   </header>
@@ -87,6 +87,7 @@
     <section class="mobile-owner-card" aria-label="Поточна сторінка"><span>СТОРІНКА ВЛАСНИКА</span><strong>Зворотний зв’язок</strong></section>
     <nav class="mobile-menu-section" aria-label="Планування"><h3>ПЛАНУВАННЯ</h3><ul>
       <li><a href="index.html">Головна</a></li><li><a href="result.html">Результат</a></li><li><a href="goals.html">Мої цілі</a></li><li><a href="shared.html">Спільний перегляд</a></li><li><a href="demo-goal.html">Приклад цілі</a></li><li><a href="deadline.html">План до дати</a></li>
+
     </ul></nav>
   </div>
 </body>

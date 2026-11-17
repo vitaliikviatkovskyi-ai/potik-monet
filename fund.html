@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Розрахуйте фінансову подушку: потрібну суму, залишок і строк накопичення.">
+  <title>Фінансова подушка — Потік монет</title>
+  <link rel="icon" href="assets/icons/logo.svg" type="image/svg+xml">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/widget.css">
+  <script src="js/theme.js"></script>
+  <script src="js/script.js" defer></script>
+  <script src="js/widget.js" defer></script>
+</head>
+<body id="top" class="fund-page">
+  <header class="site-header w-full bg-white border-b border-gray-100 sticky top-0 z-50">
+    <div class="header-container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="header-row flex items-center justify-between h-20">
+        <div class="header-logo project-brand"><img src="assets/icons/logo.svg" alt=""><span>Потік монет</span></div>
+        <nav class="header-nav hidden md:flex items-center" aria-label="Головна навігація">
+          <ul class="flex items-center gap-8 m-0 p-0 list-none">
+            <li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="result.html" class="text-gray-700 hover:text-[#254d7e] font-medium">Мій результат</a></li>
+            <li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="goals.html" class="text-gray-700 hover:text-[#254d7e] font-medium">Мої цілі</a></li>
+            <li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="shared.html" class="text-gray-700 hover:text-[#254d7e] font-medium">Спільний перегляд</a></li>
+            <li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="demo-goal.html" class="text-gray-700 hover:text-[#254d7e] font-medium">Приклад цілі</a></li>
+            <li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="deadline.html" class="text-gray-700 hover:text-[#254d7e] font-medium">План до дати</a></li>
+            
+          </ul>
+        </nav>
+        <div class="header-actions">
+          <a href="index.html#simulator" class="header-action-link inline-flex items-center justify-center px-6 py-2.5 bg-[#254d7e] hover:bg-[#1e3e67] text-white font-semibold rounded-lg">Створити ціль</a>
+          <button type="button" class="theme-toggle" aria-label="Темна тема" aria-pressed="false" title="Темна тема"><span aria-hidden="true">☾</span></button>
+          <button class="menu-toggle md:hidden p-2 text-gray-700" type="button" aria-label="Відкрити меню" aria-controls="mobile-menu-overlay" aria-expanded="false"><i class="fa-solid fa-bars text-xl" aria-hidden="true"></i></button>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main class="main-content">
+    <section class="block-section fund-section" id="fund-widget" aria-labelledby="fund-title">
+      <div class="fund-heading">
+        <div>
+          <span class="section-tag">ІНТЕРАКТИВНИЙ КАЛЬКУЛЯТОР</span>
+          <h1 class="section-title" id="fund-title">Ваша фінансова подушка</h1>
+          <p>Дізнайтеся, скільки потрібно відкласти на непередбачені витрати й коли ви зберете цю суму.</p>
+        </div>
+        <span class="fund-heading-mark" aria-hidden="true">₴</span>
+      </div>
+      <div class="fund-layout">
+        <form id="fund-form" class="fund-form" novalidate aria-label="Калькулятор фінансової подушки">
+          <div class="fund-field">
+            <label for="fund-expenses">Щомісячні витрати, грн</label>
+            <input id="fund-expenses" type="number" min="1" max="1000000" step="0.01" inputmode="decimal" value="20000" required aria-describedby="fund-expenses-error">
+            <p id="fund-expenses-error" class="fund-error" aria-live="polite"></p>
+          </div>
+          <div class="fund-field">
+            <label for="fund-months">Запас на скільки місяців</label>
+            <select id="fund-months" aria-describedby="fund-months-error">
+              <option value="3">3 місяці</option>
+              <option value="6" selected>6 місяців</option>
+              <option value="9">9 місяців</option>
+              <option value="12">12 місяців</option>
+            </select>
+            <p id="fund-months-error" class="fund-error" aria-live="polite"></p>
+          </div>
+          <div class="fund-field">
+            <label for="fund-saved">Уже заощаджено, грн</label>
+            <input id="fund-saved" type="number" min="0" max="100000000" step="0.01" inputmode="decimal" value="30000" required aria-describedby="fund-saved-error">
+            <p id="fund-saved-error" class="fund-error" aria-live="polite"></p>
+          </div>
+          <div class="fund-field">
+            <label for="fund-deposit">Щомісячний внесок, грн</label>
+            <input id="fund-deposit" type="number" min="0" max="1000000" step="0.01" inputmode="decimal" value="10000" required aria-describedby="fund-deposit-error">
+            <p id="fund-deposit-error" class="fund-error" aria-live="polite"></p>
+          </div>
+          <p class="fund-note">Орієнтовний розрахунок без відсотків. Внесок враховується наприкінці місяця.</p>
+        </form>
+        <div class="fund-result" aria-label="Результат розрахунку">
+          <span class="fund-result-kicker">ВАШ ПЛАН</span>
+          <p class="fund-result-lead" id="fund-status" role="status" aria-live="polite"></p>
+          <dl class="fund-metrics">
+            <div><dt>Потрібна подушка</dt><dd id="fund-target">—</dd></div>
+            <div><dt>Залишилося зібрати</dt><dd id="fund-remaining">—</dd></div>
+            <div><dt>Час до мети</dt><dd id="fund-horizon">—</dd></div>
+          </dl>
+          <div class="fund-progress-label"><span>Зібрано зараз</span><strong id="fund-progress-text">—</strong></div>
+          <progress id="fund-progress" class="fund-progress" max="100" value="0" aria-label="Частка зібраної фінансової подушки"></progress>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer-simple"><div class="result-container">Потік монет · <a href="index.html">На головну</a></div></footer>
+  <div class="mobile-menu-overlay" id="mobile-menu-overlay" aria-hidden="true">
+    <div class="mobile-menu-header"><span>МЕНЮ</span><button class="close-menu" type="button"><span>Закрити</span><i class="fa-solid fa-xmark" aria-hidden="true"></i></button></div>
+    <h2>Знайдіть свій розділ.</h2>
+    <section class="mobile-owner-card" aria-label="Поточна сторінка"><span>ПЛАНУВАННЯ</span><strong>Фінансова подушка</strong></section>
+    <nav class="mobile-menu-section" aria-label="Планування"><h3>ПЛАНУВАННЯ</h3><ul>
+      <li><a href="index.html">Головна</a></li>
+      <li><a href="result.html">Результат</a></li>
+      <li><a href="goals.html">Мої цілі</a></li>
+      <li><a href="shared.html">Спільний перегляд</a></li>
+      <li><a href="demo-goal.html">Приклад цілі</a></li>
+      <li><a href="deadline.html">План до дати</a></li>
+      
+    </ul></nav>
+  </div>
+</body>
+</html>

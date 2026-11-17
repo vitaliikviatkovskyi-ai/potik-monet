@@ -13,28 +13,34 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <!-- Font Awesome 6 Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
   <link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/theme.css"><script src="js/theme.js"></script></head>
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/lab10-media.css">
+  <link rel="stylesheet" href="css/widget.css">
+  <script src="js/theme.js"></script>
+</head>
 <body id="top">
-<header class="w-full bg-white border-b border-gray-100 sticky top-0 z-50">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-20">
-      <div class="header-logo project-brand"><img src="assets/icons/logo.svg" alt=""><span>Потік монет</span><button type="button" class="theme-toggle" aria-label="Темна тема" aria-pressed="false" title="Темна тема"><span aria-hidden="true">☾</span></button></div>
-      <button class="menu-toggle md:hidden p-2 text-gray-700 transition-all duration-200 hover:bg-[#1e3e67] active:scale-95" type="button" aria-label="Відкрити меню" aria-controls="mobile-menu-overlay" aria-expanded="false">
-        <i class="fa-solid fa-bars text-xl" aria-hidden="true"></i>
-      </button>
+<header class="site-header w-full bg-white border-b border-gray-100 sticky top-0 z-50">
+  <div class="header-container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="header-row flex items-center justify-between h-20">
+      <div class="header-logo project-brand"><img src="assets/icons/logo.svg" alt=""><span>Потік монет</span></div>
       <nav class="header-nav hidden md:flex items-center" aria-label="Головна навігація">
         <ul class="flex items-center gap-8 m-0 p-0 list-none">
           <li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="result.html" class="text-gray-700 hover:text-[#254d7e] font-medium transition hover:underline transition-colors">Мій результат</a></li>
           <li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="goals.html" class="text-gray-700 hover:text-[#254d7e] font-medium transition hover:underline transition-colors">Мої цілі</a></li>
           <li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="shared.html" class="text-gray-700 hover:text-[#254d7e] font-medium transition hover:underline transition-colors">Спільний перегляд</a></li>
           <li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="demo-goal.html" class="text-gray-700 hover:text-[#254d7e] font-medium transition hover:underline transition-colors">Приклад цілі</a></li>
-          <li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="deadline.html" class="text-gray-700 hover:text-[#254d7e] font-medium transition hover:underline transition-colors">План до дати</a></li></ul>
+          <li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="deadline.html" class="text-gray-700 hover:text-[#254d7e] font-medium transition hover:underline transition-colors">План до дати</a></li>
+</ul>
       </nav>
-      <div class="hidden md:block">
-        <a href="#simulator" class="inline-flex items-center justify-center px-6 py-2.5 bg-[#254d7e] hover:bg-[#1e3e67] text-white font-semibold rounded-lg transition shadow-sm transition-all duration-200 active:scale-95">
+      <div class="header-actions">
+        <a href="#simulator" class="header-action-link inline-flex items-center justify-center px-6 py-2.5 bg-[#254d7e] hover:bg-[#1e3e67] text-white font-semibold rounded-lg transition shadow-sm transition-all duration-200 active:scale-95">
           Створити ціль
         </a>
+        <button type="button" class="theme-toggle" aria-label="Темна тема" aria-pressed="false" title="Темна тема"><span aria-hidden="true">☾</span></button>
+        <button class="menu-toggle md:hidden p-2 text-gray-700 transition-all duration-200 hover:bg-[#1e3e67] active:scale-95" type="button" aria-label="Відкрити меню" aria-controls="mobile-menu-overlay" aria-expanded="false"><i class="fa-solid fa-bars text-xl" aria-hidden="true"></i></button>
       </div>
     </div>
   </div>
@@ -45,14 +51,20 @@
       <div class="home-hero-inner mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="hero-text">
           <p class="hero-eyebrow">ФІНАНСОВА ЦІЛЬ. ЗРОЗУМІЛИЙ ШЛЯХ.</p>
-          <h1 class="main-title !text-2xl sm:!text-3xl lg:!text-4xl font-sans font-bold" id="main-title">Побачте прогнозовану дату своєї цілі</h1>
+          <h1 class="main-title !text-2xl sm:!text-3xl lg:!text-4xl font-sans font-bold" id="main-title" aria-label="Побачте прогнозовану дату своєї цілі"><span id="typed-heading" aria-hidden="true">Побачте прогнозовану дату своєї цілі</span></h1>
           <p class="hero-desc">Чотири параметри — і замість «колись» ви бачите горизонт накопичення. Без ручного обліку витрат і доступу до банківських даних.</p>
           <div class="hero-btn-wrap">
             <a href="#simulator" class="btn inline-flex w-full md:w-auto !min-h-[44px] items-center justify-center rounded-xl transition-all duration-200 hover:bg-[#1e3e67] active:scale-95">До симулятора</a>
           </div>
         </div>
         <div class="hero-media">
-          <img src="assets/images/hero-illustration.png" alt="3D-ілюстрація фінансового треку">
+          <img src="assets/images/hero-illustration-cutout.png" alt="3D-ілюстрація фінансового треку">
+          <svg class="hero-video-filter-defs" width="0" height="0" aria-hidden="true" focusable="false">
+            <filter id="hero-video-key" color-interpolation-filters="sRGB">
+              <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  8 0 0 0 -0.95"></feColorMatrix>
+            </filter>
+          </svg>
+          <video class="hero-light-video" data-src="assets/video/hero-light-v2.mp4" muted loop playsinline aria-hidden="true"></video>
         </div>
         <ul class="hero-badges" aria-label="Переваги сервісу">
           <li class="badge hover:bg-gray-50/80 transition-colors rounded-lg">4 параметри</li>
@@ -68,9 +80,15 @@
         <span class="section-tag">01 / СИМУЛЯТОР</span>
         <h2 class="section-title !text-2xl sm:!text-3xl lg:!text-4xl font-sans font-bold" id="simulator-title">Чотири числа. Один зрозумілий горизонт.</h2>
         <p class="section-desc">Задайте суму й комфортний щомісячний внесок. Симулятор побудує прогноз і повний розклад накопичення — місяць за місяцем.</p>
-        <p class="bold-text">Почніть із власного темпу</p><div class="deadline-launch"><a href="deadline.html" class="btn !bg-[#254d7e] !text-white hover:!bg-[#1e3e67]">План до дати</a></div>
+        <p class="bold-text">Почніть із власного темпу</p><div class="deadline-launch"><a href="deadline.html" class="btn !bg-[#254d7e] !text-white hover:!bg-[#1e3e67]">План до дати</a><a href="contact.html" class="btn !bg-[#254d7e] !text-white hover:!bg-[#1e3e67]">Форма зворотного зв’язку</a></div>
         <p class="small-text">У прикладі: ціль 50 000 ₴ та внесок 5 000 ₴ на місяць. Уже заощаджено 0 ₴, очікувана дохідність — 0% річних.</p>
         <p class="small-text">Змінюйте параметри, щоб порівняти сценарії. Для першого розрахунку обліковий запис не потрібен.</p>
+        <div class="fund-teaser" id="fund-widget" aria-labelledby="fund-teaser-title">
+          <span class="section-tag">ДОДАТКОВИЙ ІНСТРУМЕНТ</span>
+          <h3 class="section-title" id="fund-teaser-title">Підготуйте фінансову подушку</h3>
+          <p>Окремий калькулятор допоможе визначити потрібний запас на непередбачені витрати та строк його накопичення.</p>
+          <a class="fund-teaser-link" href="fund.html">Розрахувати подушку <span aria-hidden="true">→</span></a>
+        </div>
       </div>
       <form class="calculator-form transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:!shadow-xl hover:!-translate-y-1" action="result.html" aria-label="Калькулятор фінансової цілі">
         <h3 class="form-title font-sans font-bold">Симулятор фінансової цілі</h3>
@@ -245,19 +263,25 @@
     <section class="block-section" id="reviews" aria-labelledby="reviews-title">
       <span class="section-tag">07 / ВІДГУКИ</span>
       <h2 class="section-title !text-2xl sm:!text-3xl lg:!text-4xl font-sans font-bold" id="reviews-title">Ясність, яку цінують.</h2>
-      <div class="reviews-grid">
-        <article class="review-card transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-gray-200 group">
-          <blockquote class="review-text">«Зручно порахувати, коли саме назбираю на авто, без підключення банківських карток.»</blockquote>
-          <p class="review-author">Олександр М.</p>
-        </article>
-        <article class="review-card transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-gray-200 group">
-          <blockquote class="review-text">«Один із найкращих інструментів, яким я коли-небудь користувався, все максимально зручно.»</blockquote>
-          <p class="review-author">Антон Т.</p>
-        </article>
-        <article class="review-card transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-gray-200 group">
-          <blockquote class="review-text">«Найпростіший калькулятор без нав'язливої реклами та складних таблиць.»</blockquote>
-          <p class="review-author">Ірина К.</p>
-        </article>
+      <div class="swiper reviews-swiper" aria-label="Карусель демонстраційних відгуків">
+        <div class="swiper-wrapper">
+          <article class="swiper-slide review-card"><blockquote class="review-text">«Зручно порахувати, коли саме назбираю на авто, без підключення банківських карток.»</blockquote><p class="review-author">Олена Коваленко</p></article>
+          <article class="swiper-slide review-card"><blockquote class="review-text">«Планую перший внесок на квартиру. Тепер бачу, скільки часу це може зайняти.»</blockquote><p class="review-author">Андрій Мельник</p></article>
+          <article class="swiper-slide review-card"><blockquote class="review-text">«Для резервного фонду важливо розуміти не лише суму, а й помісячний шлях до неї.»</blockquote><p class="review-author">Ірина Бондар</p></article>
+          <article class="swiper-slide review-card"><blockquote class="review-text">«Після зміни щомісячного внеску одразу видно новий строк досягнення цілі.»</blockquote><p class="review-author">Дмитро Савчук</p></article>
+          <article class="swiper-slide review-card"><blockquote class="review-text">«Помісячний прогноз допомагає зрозуміти, як формується план накопичення.»</blockquote><p class="review-author">Марія Шевчук</p></article>
+        </div>
+        <div class="reviews-controls"><button class="reviews-prev" type="button" aria-label="Попередній відгук">‹</button><div class="reviews-pagination"></div><button class="reviews-next" type="button" aria-label="Наступний відгук">›</button></div>
+      </div>
+      <div class="media-gallery" aria-labelledby="gallery-title">
+        <div class="media-gallery-heading"><h3 class="section-title !text-2xl sm:!text-3xl lg:!text-4xl font-sans font-bold" id="gallery-title">Галерея проєкту</h3><p>П’ять ідей для фінансових цілей. Натисніть на фото, щоб переглянути його збільшеним.</p></div>
+        <div class="media-gallery-grid">
+          <figure><a href="assets/images/ferrari.jpg" data-fancybox="potik-gallery" data-caption="Авто — розрахувати шлях до великої покупки"><img src="assets/images/ferrari.jpg" alt="Автомобіль як приклад цілі накопичення" loading="lazy"></a><figcaption>Авто</figcaption></figure>
+          <figure><a href="assets/images/apartment.jpg" data-fancybox="potik-gallery" data-caption="Квартира — спланувати перший внесок"><img src="assets/images/apartment.jpg" alt="Житловий комплекс як приклад цілі накопичення" loading="lazy"></a><figcaption>Квартира</figcaption></figure>
+          <figure><a href="assets/images/safety-fund.jpg" data-fancybox="potik-gallery" data-caption="Власний дім — побачити горизонт накопичення"><img src="assets/images/safety-fund.jpg" alt="Приватний будинок як приклад цілі накопичення" loading="lazy"></a><figcaption>Власний дім</figcaption></figure>
+          <figure><a href="assets/images/macbook.jpeg" data-fancybox="potik-gallery" data-caption="Ноутбук — спланувати покупку для роботи чи навчання"><img src="assets/images/macbook.jpeg" alt="Ноутбук як приклад цілі накопичення для роботи чи навчання" loading="lazy"></a><figcaption>Ноутбук</figcaption></figure>
+          <figure><a href="assets/images/travel-goal.png" data-fancybox="potik-gallery" data-caption="Подорож — відкладати кошти на нові враження"><img src="assets/images/travel-goal.png" alt="Земна куля, літаки й відомі пам’ятки як образ майбутньої подорожі" loading="lazy"></a><figcaption>Подорож</figcaption></figure>
+        </div>
       </div>
     </section>
 
@@ -400,6 +424,10 @@
     </div>
   </footer>
   <script src="js/script.js" defer></script><script src="js/planner.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js" defer></script>
+  <script src="js/lab10-media.js" defer></script>
+  <script src="js/hero-video.js" defer></script>
   <div class="mobile-menu-overlay" id="mobile-menu-overlay" aria-hidden="true">
     <div class="mobile-menu-header">
       <span>МЕНЮ</span>
@@ -418,7 +446,8 @@
         <li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="goals.html" class="hover:text-[#254d7e] hover:underline transition-colors"><span>Мої цілі</span><span class="mobile-menu-arrow" aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></span></a></li>
         <li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="shared.html" class="hover:text-[#254d7e] hover:underline transition-colors"><span>Спільний перегляд</span><span class="mobile-menu-arrow" aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></span></a></li>
         <li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="demo-goal.html" class="hover:text-[#254d7e] hover:underline transition-colors"><span>Приклад цілі</span><span class="mobile-menu-arrow" aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></span></a></li>
-        <li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="deadline.html" class="hover:text-[#254d7e] hover:underline transition-colors">План до дати</a></li></ul>
+        <li class="hover:bg-gray-50/80 transition-colors rounded-lg"><a href="deadline.html" class="hover:text-[#254d7e] hover:underline transition-colors">План до дати</a></li>
+</ul>
     </nav>
     <nav class="mobile-menu-section" aria-label="Розділи головної">
       <h3 class="font-sans font-bold">РОЗДІЛИ ГОЛОВНОЇ</h3>

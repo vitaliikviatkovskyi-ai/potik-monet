@@ -32,3 +32,15 @@ html[data-theme="dark"] :is(.menu-toggle,.menu-toggle .fa-bars,[class*="text-[#2
 html[data-theme="dark"] :is(.result-bar,.demo-year-track span) {background-color:#8baed0}
 html[data-theme="dark"] :is(.result-bar.is-final,.demo-year-list .is-final .demo-year-track span) {background-color:#98c6a6}
 html[data-theme="dark"] .theme-toggle:hover {background-color:#345047}
+
+/* Dark sections use a distinct surface when the theme changes. */
+html[data-theme="dark"] {
+ --theme-dark-section:#243d45;
+ --theme-dark-section-alt:#29474d;
+}
+html[data-theme="dark"] :is(.home-hero,.result-hero,.goals-hero,.shared-hero,.demo-hero,.contact-page .contact-intro) {
+ background-color:var(--theme-dark-section) !important;
+}
+html[data-theme="dark"] :is(#how.dark-bg,#shared.dark-bg,#media,.footer,.footer-bottom,.mobile-menu-overlay) {
+ background-color:var(--theme-dark-section-alt) !important;
+}
