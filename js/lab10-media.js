@@ -56,7 +56,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const heading = document.querySelector("#typed-heading");
-  if (!reducedMotion && heading) {
+  const mobileViewport = window.matchMedia("(max-width: 699px)").matches;
+  if (!reducedMotion && !mobileViewport && heading) {
     const text = heading.textContent;
     heading.textContent = "";
     heading.classList.add("is-typing");

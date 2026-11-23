@@ -39,7 +39,7 @@ html[data-theme="dark"] #reviews .media-gallery-heading h3 { color: #e6efe9; }
 html[data-theme="dark"] #reviews .media-gallery-heading p { color: #bacac7; }
 html[data-theme="dark"] #reviews .media-gallery-swiper figcaption { color: #e6efe9; }
 html[data-theme="dark"] #reviews .swiper-pagination-bullet-active { background: #a4c9ee; }
-@media (max-width: 699px) { #main-title { min-height: 3.6em; } }
+@media (max-width: 699px) { #main-title { min-height: 0; } }
 @media (prefers-reduced-motion: reduce) {
   #reviews .reviews-controls button, #reviews .gallery-controls button, #reviews .media-gallery-swiper img { transition: none; }
   #reviews .reviews-controls button:hover, #reviews .gallery-controls button:hover, #reviews .media-gallery-swiper a:hover img { transform: none; }
