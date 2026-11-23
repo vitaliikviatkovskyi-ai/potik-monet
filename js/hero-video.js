@@ -1,31 +1,61 @@
 (() => {
-  const video = document.querySelector('.hero-light-video');
-  if (!video) return;
+  const media = document.querySelector('.hero-media');
+  if (!media) return;
 
-  const media = video.closest('.hero-media');
+  const videos = {
+    light: media.querySelector('.hero-light-video'),
+    dark: media.querySelector('.hero-dark-video'),
+  };
+  if (!videos.light || !videos.dark) return;
+
   const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  const playingClass = theme => `is-${theme}-video-playing`;
+  let currentTheme;
 
   function syncVideo() {
-    const shouldPlay = document.documentElement.dataset.theme === 'light' && !reduceMotion.matches;
-    if (!shouldPlay) {
-      media.classList.remove('is-video-playing');
-      video.pause();
-      if (video.hasAttribute('src')) {
-        video.removeAttribute('src');
+    const activeTheme = reduceMotion.matches ? null : document.documentElement.dataset.theme;
+    if (activeTheme !== currentTheme) {
+      media.classList.remove('is-light-video-playing', 'is-dark-video-playing', 'is-video-fallback');
+      currentTheme = activeTheme;
+    }
+    for (const [theme, video] of Object.entries(videos)) {
+      if (theme !== activeTheme) {
+        media.classList.remove(playingClass(theme));
+        video.pause();
+        if (video.hasAttribute('src')) {
+          video.removeAttribute('src');
+          video.load();
+        }
+        continue;
+      }
+
+      if (!video.hasAttribute('src')) {
+        video.src = video.dataset.src;
         video.load();
       }
-      return;
+      video.play().catch(() => {
+        if (currentTheme === theme) {
+          media.classList.remove(playingClass(theme));
+          media.classList.add('is-video-fallback');
+        }
+      });
     }
-
-    if (!video.hasAttribute('src')) {
-      video.src = video.dataset.src;
-      video.load();
-    }
-    video.play().catch(() => media.classList.remove('is-video-playing'));
   }
 
-  video.addEventListener('playing', () => media.classList.add('is-video-playing'));
-  video.addEventListener('error', () => media.classList.remove('is-video-playing'));
+  for (const [theme, video] of Object.entries(videos)) {
+    video.addEventListener('playing', () => {
+      if (!reduceMotion.matches && document.documentElement.dataset.theme === theme) {
+        media.classList.remove('is-video-fallback');
+        media.classList.add(playingClass(theme));
+      }
+    });
+    video.addEventListener('error', () => {
+      if (currentTheme === theme) {
+        media.classList.remove(playingClass(theme));
+        media.classList.add('is-video-fallback');
+      }
+    });
+  }
   new MutationObserver(syncVideo).observe(document.documentElement, {
     attributes: true,
     attributeFilter: ['data-theme'],

@@ -6,7 +6,7 @@ if (relative(process.cwd(), output) !== 'dist') throw new Error('Некорек�
 await rm(output, { recursive: true, force: true });
 await mkdir(output, { recursive: true });
 for (const entry of await readdir(process.cwd(), { withFileTypes: true })) {
-  if (entry.isFile() && entry.name.endsWith('.html')) {
+  if (entry.isFile() && /\.(?:html|txt|xml)$/.test(entry.name)) {
     await cp(entry.name, join(output, entry.name));
   }
 }

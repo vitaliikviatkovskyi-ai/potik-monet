@@ -21,6 +21,33 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  if (typeof Swiper === "function" && document.querySelector(".media-gallery-swiper")) {
+    const gallery = new Swiper(".media-gallery-swiper", {
+      loop: true,
+      spaceBetween: 14,
+      speed: reducedMotion ? 0 : 650,
+      grabCursor: true,
+      autoplay: reducedMotion ? false : {
+        delay: 3000,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true
+      },
+      pagination: { el: ".gallery-pagination", clickable: true },
+      navigation: { nextEl: ".gallery-next", prevEl: ".gallery-prev" },
+      breakpoints: {
+        320: { slidesPerView: 1.25 },
+        560: { slidesPerView: 2 },
+        900: { slidesPerView: 3 },
+        1200: { slidesPerView: 4 }
+      }
+    });
+    const gallerySection = document.querySelector(".media-gallery");
+    gallerySection.addEventListener("focusin", () => gallery.autoplay?.stop());
+    gallerySection.addEventListener("focusout", () => {
+      if (!gallerySection.contains(document.activeElement)) gallery.autoplay?.start();
+    });
+  }
+
   if (typeof Fancybox !== "undefined") {
     Fancybox.bind('[data-fancybox="potik-gallery"]', {
       Carousel: { transition: reducedMotion ? false : "fade" },

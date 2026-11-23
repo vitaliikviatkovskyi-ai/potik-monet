@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="Переглядайте збережені фінансові цілі, прогноз накопичення та налаштування спільного доступу.">
+	<meta name="robots" content="noindex, nofollow">
 	<title>Мої цілі — Потік монет</title>
 	<script src="https://cdn.tailwindcss.com"></script>
 	<!-- Google Fonts (Montserrat) -->
@@ -135,6 +136,10 @@
 						<label for="share-link">Посилання для перегляду</label>
 						<input id="share-link" type="url" readonly placeholder="З’явиться після створення">
 						<a id="share-open" href="shared.html" target="_blank" rel="noopener noreferrer" hidden>Переглянути посилання</a>
+						<div id="share-qr" class="share-qr" hidden>
+							<div id="share-qr-code" class="share-qr-code" role="img" aria-label="QR-код для відкриття спільної цілі"></div>
+							<p>Відскануйте код, щоб відкрити ціль на телефоні.</p>
+						</div>
 						<div class="sharing-actions">
 							<button id="share-copy" type="button" disabled>Копіювати посилання</button>
 							<button id="share-revoke" type="button" disabled>Відкликати доступ</button>
@@ -155,7 +160,7 @@
 			<p>© 2026 Потік монет. Усі права захищені. <a href="demo-goal.html" class="hover:text-[#254d7e] hover:underline transition-colors">Приклад цілі</a></p>
 		</div>
 	</footer>
-	<script src="js/script.js" defer></script><script src="js/planner.js" defer></script>
+	<script src="js/script.js" defer></script><script src="js/qrcode-generator.js" defer></script><script src="js/planner.js" defer></script>
 	<div class="mobile-menu-overlay" id="mobile-menu-overlay" aria-hidden="true">
 		<div class="mobile-menu-header">
 			<span>МЕНЮ</span>

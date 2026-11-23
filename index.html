@@ -58,14 +58,19 @@
           </div>
         </div>
         <div class="hero-media">
-          <img src="assets/images/hero-illustration-cutout.png" alt="3D-ілюстрація фінансового треку">
+          <img src="assets/images/hero-illustration-cutout.png" width="496" height="580" alt="3D-ілюстрація фінансового треку">
           <svg class="hero-video-filter-defs" width="0" height="0" aria-hidden="true" focusable="false">
             <filter id="hero-video-key" color-interpolation-filters="sRGB">
               <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  8 0 0 0 -0.95"></feColorMatrix>
             </filter>
+            <filter id="hero-video-key-dark" color-interpolation-filters="sRGB">
+              <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  8 0 0 0 -1.35"></feColorMatrix>
+            </filter>
           </svg>
-          <video class="hero-light-video" data-src="assets/video/hero-light-v2.mp4" muted loop playsinline aria-hidden="true"></video>
+          <video class="hero-theme-video hero-light-video" data-src="assets/video/hero-light-v2.mp4" muted loop playsinline preload="auto" aria-hidden="true"></video>
+          <video class="hero-theme-video hero-dark-video" data-src="assets/video/hero-dark.mp4" muted loop playsinline preload="auto" aria-hidden="true"></video>
         </div>
+        <script src="js/hero-video.js"></script>
         <ul class="hero-badges" aria-label="Переваги сервісу">
           <li class="badge hover:bg-gray-50/80 transition-colors rounded-lg">4 параметри</li>
           <li class="badge hover:bg-gray-50/80 transition-colors rounded-lg">Без реєстрації</li>
@@ -256,7 +261,7 @@
         <p>Власник зможе відкликати доступ. Збереження в обліковому записі, створення посилання та керування доступом — заплановані можливості.</p>
       </div>
       <article class="shared-card transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-gray-200 group" aria-label="Попередній перегляд спільної цілі">
-        <img src="assets/images/preview-card.png" alt="Картка спільного перегляду цілі з доступом лише для читання" class="group-hover:scale-105 transition-transform duration-300 ease-out">
+        <img src="assets/images/preview-card.png" width="480" height="413" loading="lazy" decoding="async" alt="Картка спільного перегляду цілі з доступом лише для читання" class="group-hover:scale-105 transition-transform duration-300 ease-out">
       </article>
     </section>
 
@@ -274,14 +279,20 @@
         <div class="reviews-controls"><button class="reviews-prev" type="button" aria-label="Попередній відгук">‹</button><div class="reviews-pagination"></div><button class="reviews-next" type="button" aria-label="Наступний відгук">›</button></div>
       </div>
       <div class="media-gallery" aria-labelledby="gallery-title">
-        <div class="media-gallery-heading"><h3 class="section-title !text-2xl sm:!text-3xl lg:!text-4xl font-sans font-bold" id="gallery-title">Галерея проєкту</h3><p>П’ять ідей для фінансових цілей. Натисніть на фото, щоб переглянути його збільшеним.</p></div>
-        <div class="media-gallery-grid">
-          <figure><a href="assets/images/ferrari.jpg" data-fancybox="potik-gallery" data-caption="Авто — розрахувати шлях до великої покупки"><img src="assets/images/ferrari.jpg" alt="Автомобіль як приклад цілі накопичення" loading="lazy"></a><figcaption>Авто</figcaption></figure>
-          <figure><a href="assets/images/apartment.jpg" data-fancybox="potik-gallery" data-caption="Квартира — спланувати перший внесок"><img src="assets/images/apartment.jpg" alt="Житловий комплекс як приклад цілі накопичення" loading="lazy"></a><figcaption>Квартира</figcaption></figure>
-          <figure><a href="assets/images/safety-fund.jpg" data-fancybox="potik-gallery" data-caption="Власний дім — побачити горизонт накопичення"><img src="assets/images/safety-fund.jpg" alt="Приватний будинок як приклад цілі накопичення" loading="lazy"></a><figcaption>Власний дім</figcaption></figure>
-          <figure><a href="assets/images/macbook.jpeg" data-fancybox="potik-gallery" data-caption="Ноутбук — спланувати покупку для роботи чи навчання"><img src="assets/images/macbook.jpeg" alt="Ноутбук як приклад цілі накопичення для роботи чи навчання" loading="lazy"></a><figcaption>Ноутбук</figcaption></figure>
-          <figure><a href="assets/images/travel-goal.png" data-fancybox="potik-gallery" data-caption="Подорож — відкладати кошти на нові враження"><img src="assets/images/travel-goal.png" alt="Земна куля, літаки й відомі пам’ятки як образ майбутньої подорожі" loading="lazy"></a><figcaption>Подорож</figcaption></figure>
+        <div class="media-gallery-heading"><h3 class="section-title !text-2xl sm:!text-3xl lg:!text-4xl font-sans font-bold" id="gallery-title">Галерея проєкту</h3><p>Вісім ідей для фінансових цілей. Галерея гортається автоматично; натисніть на фото, щоб переглянути його збільшеним.</p></div>
+        <div class="swiper media-gallery-swiper" aria-label="Ідеї для фінансових цілей">
+          <div class="swiper-wrapper">
+            <figure class="swiper-slide"><a href="assets/images/ferrari.jpg" data-fancybox="potik-gallery" data-caption="Авто — розрахувати шлях до великої покупки"><img src="assets/images/ferrari.jpg" width="1600" height="1069" alt="Автомобіль як приклад цілі накопичення" loading="lazy" decoding="async"></a><figcaption>Авто</figcaption></figure>
+            <figure class="swiper-slide"><a href="assets/images/apartment.jpg" data-fancybox="potik-gallery" data-caption="Квартира — спланувати перший внесок"><img src="assets/images/apartment.jpg" width="850" height="478" alt="Житловий комплекс як приклад цілі накопичення" loading="lazy" decoding="async"></a><figcaption>Квартира</figcaption></figure>
+            <figure class="swiper-slide"><a href="assets/images/safety-fund.jpg" data-fancybox="potik-gallery" data-caption="Власний дім — побачити горизонт накопичення"><img src="assets/images/safety-fund.jpg" width="1360" height="946" alt="Приватний будинок як приклад цілі накопичення" loading="lazy" decoding="async"></a><figcaption>Власний дім</figcaption></figure>
+            <figure class="swiper-slide"><a href="assets/images/macbook.jpeg" data-fancybox="potik-gallery" data-caption="Ноутбук — спланувати покупку для роботи чи навчання"><img src="assets/images/macbook.jpeg" width="1500" height="1000" alt="Ноутбук як приклад цілі накопичення для роботи чи навчання" loading="lazy" decoding="async"></a><figcaption>Ноутбук</figcaption></figure>
+            <figure class="swiper-slide"><a href="assets/images/travel-coast.jpg" data-fancybox="potik-gallery" data-caption="Подорож — відкладати кошти на нові враження"><img src="assets/images/travel-coast.jpg" width="1200" height="900" alt="Мандрівниця дивиться на приморське місто і море" loading="lazy" decoding="async"></a><figcaption>Подорож</figcaption></figure>
+            <figure class="swiper-slide"><a href="assets/images/bicycle-goal.jpg" data-fancybox="potik-gallery" data-caption="Велосипед — накопичити на активний відпочинок"><img src="assets/images/bicycle-goal.jpg" width="1200" height="900" alt="Велосипед біля міської велодоріжки" loading="lazy" decoding="async"></a><figcaption>Велосипед</figcaption></figure>
+            <figure class="swiper-slide"><a href="assets/images/education-goal.jpg" data-fancybox="potik-gallery" data-caption="Навчання — відкласти кошти на освіту"><img src="assets/images/education-goal.jpg" width="1200" height="900" alt="Книжки й ноутбук на столі в бібліотеці" loading="lazy" decoding="async"></a><figcaption>Навчання</figcaption></figure>
+            <figure class="swiper-slide"><a href="assets/images/renovation-goal.jpg" data-fancybox="potik-gallery" data-caption="Ремонт — спланувати оновлення оселі"><img src="assets/images/renovation-goal.jpg" width="1200" height="900" alt="Оновлена затишна вітальня" loading="lazy" decoding="async"></a><figcaption>Ремонт</figcaption></figure>
+          </div>
         </div>
+        <div class="gallery-controls"><button class="gallery-prev" type="button" aria-label="Попередня ціль">‹</button><div class="gallery-pagination"></div><button class="gallery-next" type="button" aria-label="Наступна ціль">›</button></div>
       </div>
     </section>
 
@@ -293,7 +304,7 @@
       </div>
       <div class="about-content">
         <figure class="about-media overflow-hidden rounded-2xl border border-white/10 shadow-lg group">
-          <img src="assets/images/about-img.png" alt="Вигин річки серед лісового ландшафту" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105 brightness-95 group-hover:brightness-100 !w-full !h-full">
+          <img src="assets/images/about-img.png" width="480" height="270" loading="lazy" decoding="async" alt="Вигин річки серед лісового ландшафту" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105 brightness-95 group-hover:brightness-100 !w-full !h-full">
           <figcaption>Ми не банк, не кредитна установа й не платіжний сервіс. Не приймаємо та не переказуємо кошти. Розрахунки не є фінансовою порадою.</figcaption>
         </figure>
       </div>
@@ -427,7 +438,6 @@
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js" defer></script>
   <script src="js/lab10-media.js" defer></script>
-  <script src="js/hero-video.js" defer></script>
   <div class="mobile-menu-overlay" id="mobile-menu-overlay" aria-hidden="true">
     <div class="mobile-menu-header">
       <span>МЕНЮ</span>

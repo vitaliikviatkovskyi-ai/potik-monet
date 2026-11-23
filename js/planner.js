@@ -271,8 +271,11 @@ function initSharing(savedGoals) {
   const revoke = document.querySelector('#share-revoke');
   const linkInput = document.querySelector('#share-link');
   const open = document.querySelector('#share-open');
+  const qrPanel = document.querySelector('#share-qr');
+  const qrCode = document.querySelector('#share-qr-code');
   const status = document.querySelector('#share-status');
   const exportButton = document.querySelector('#goal-export');
+  let renderedQrUrl = '';
   const goals = savedGoals.slice().reverse().map(parseGoal);
   const currentGoal = () => goals.find(goal => goal.id === select.value);
   const currentLink = () => loadShareLinks()[select.value];
@@ -287,6 +290,23 @@ function initSharing(savedGoals) {
     linkInput.value = link ? shareUrl(link.id) : '';
     open.hidden = !link;
     if (link) open.href = linkInput.value;
+    if (!link) {
+      qrPanel.hidden = true;
+      qrCode.replaceChildren();
+      renderedQrUrl = '';
+    } else if (renderedQrUrl !== linkInput.value) {
+      qrCode.replaceChildren();
+      try {
+        const qr = qrcode(0, 'M');
+        qr.addData(linkInput.value);
+        qr.make();
+        qrCode.innerHTML = qr.createSvgTag({ cellSize: 4, margin: 12, scalable: true });
+        qrPanel.hidden = false;
+        renderedQrUrl = linkInput.value;
+      } catch {
+        qrPanel.hidden = true;
+      }
+    }
     create.textContent = link ? 'Оновити посилання' : 'Створити посилання';
     create.disabled = !goal;
     copy.disabled = !link;
