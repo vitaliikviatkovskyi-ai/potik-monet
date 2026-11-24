@@ -1,7 +1,8 @@
-// The form is a local validation demo; no request is sent to a server.
 const form = document.getElementById('feedbackForm');
 const modal = document.getElementById('successModal');
 const closeButton = document.getElementById('closeModalBtn');
+const submitButton = document.getElementById('submitBtn');
+const submitStatus = document.getElementById('submitStatus');
 const fields = ['username', 'email', 'phone', 'message', 'agreement'];
 const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const phonePattern = /^(?:0|\+?380)?[1-9]\d{8}$/;
@@ -64,19 +65,40 @@ for (const id of fields) {
     if (touched || input.getAttribute('aria-invalid') === 'true') validators[id]();
   });
 }
-form.addEventListener('submit', event => {
+form.addEventListener('submit', async event => {
   event.preventDefault();
+  if (submitButton.disabled) return;
+  submitStatus.textContent = '';
   const results = fields.map(id => validators[id]());
   if (results.includes(false)) {
     document.getElementById(fields[results.indexOf(false)]).focus();
     return;
   }
-  returnFocus = document.activeElement;
-  modal.classList.remove('hidden');
-  modal.classList.add('flex');
-  modal.setAttribute('aria-hidden', 'false');
-  document.body.style.overflow = 'hidden';
-  closeButton.focus();
+  submitButton.disabled = true;
+  submitButton.textContent = 'Надсилання…';
+  form.setAttribute('aria-busy', 'true');
+  try {
+    const response = await fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(new FormData(form)).toString()
+    });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    returnFocus = submitButton;
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    closeButton.focus();
+  } catch (error) {
+    submitStatus.textContent = 'Не вдалося надіслати повідомлення. Перевірте з’єднання і спробуйте ще раз.';
+    submitStatus.focus();
+    console.error('Не вдалося надіслати форму:', error);
+  } finally {
+    submitButton.disabled = false;
+    submitButton.textContent = 'Надіслати';
+    form.removeAttribute('aria-busy');
+  }
 });
 function closeModal() {
   modal.classList.add('hidden');

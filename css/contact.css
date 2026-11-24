@@ -38,6 +38,9 @@
 .field-group .border-green-500 { border-color: #15803d !important; }
 .contact-page #submitBtn { background: #254d7e; color: #fff; }
 .contact-page #submitBtn:hover { background: #1e3e67; }
+.contact-page #submitBtn:disabled { opacity: .7; cursor: wait; }
+.submit-status { margin: .75rem 0 0; font-size: .875rem; font-weight: 600; color: #b91c1c; }
+.submit-status:empty { display: none; }
 .contact-page #closeModalBtn { background: #254d7e; color: #fff; }
 .contact-page #closeModalBtn:hover { background: #1e3e67; }
 html[data-theme="dark"] .contact-page { background: #101a22; color: #e6efe9; }
@@ -50,6 +53,7 @@ html[data-theme="dark"] .field-group input:not([type=checkbox]), html[data-theme
 html[data-theme="dark"] .field-group .border-red-500 { border-color: #f87171 !important; }
 html[data-theme="dark"] .field-group .border-green-500 { border-color: #6ee7a6 !important; }
 html[data-theme="dark"] .field-error { color: #fca5a5; }
+html[data-theme="dark"] .submit-status { color: #fca5a5; }
 html[data-theme="dark"] #modalTitle, html[data-theme="dark"] #modalDescription { color: #e6efe9 !important; }
 @media (max-width: 760px) { .contact-intro-badge { display: none; } .contact-page .header-logo img { width: 64px !important; height: 64px !important; } }
 @media (prefers-reduced-motion: reduce) { .contact-intro, .contact-intro-badge, #feedbackForm { transition: none; transform: none !important; } }
