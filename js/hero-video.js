@@ -9,6 +9,7 @@
   if (!videos.light || !videos.dark) return;
 
   const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  const mobileViewport = matchMedia('(max-width: 699px)');
   const playingClass = theme => `is-${theme}-video-playing`;
   let currentTheme;
 
@@ -29,8 +30,11 @@
         continue;
       }
 
-      if (!video.hasAttribute('src')) {
-        video.src = video.dataset.src;
+      const mobileSource = mobileViewport.matches &&
+        video.canPlayType('video/webm; codecs="vp9"') && video.dataset.srcMobile;
+      const source = mobileSource || video.dataset.src;
+      if (video.getAttribute('src') !== source) {
+        video.src = source;
         video.load();
       }
       video.play().catch(() => {
@@ -61,5 +65,6 @@
     attributeFilter: ['data-theme'],
   });
   reduceMotion.addEventListener('change', syncVideo);
+  mobileViewport.addEventListener('change', syncVideo);
   syncVideo();
 })();
