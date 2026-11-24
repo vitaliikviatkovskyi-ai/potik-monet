@@ -1039,6 +1039,13 @@ html[data-theme="dark"] .hero-media.is-dark-video-playing > .hero-dark-video {
 	opacity: 1;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+	html[data-theme="light"] .hero-media:not(.is-video-fallback) > .hero-light-video,
+	html[data-theme="dark"] .hero-media:not(.is-video-fallback) > .hero-dark-video {
+		opacity: 1;
+	}
+}
+
 .badge {
 	border: 0;
 	border-radius: 0;
